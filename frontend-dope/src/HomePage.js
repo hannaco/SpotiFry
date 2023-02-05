@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import "./HomePage.css"
 import axios from "axios";
 
@@ -60,6 +60,9 @@ const HomePage = () => {
     }
 
     return (
+        <> {/* if not logged in (no token) navigate back to login page */}
+        {! window.localStorage.getItem("token") ? <Navigate replace to='/'/> 
+        :
         <div className="homepage">
             <button className="logout-button" onClick={LogOut}>
             Sign Out
@@ -81,6 +84,10 @@ const HomePage = () => {
                 <SavedSongs />
             </div>
         </div>
+        }
+        
+        </>
+        
     );
 }
 
