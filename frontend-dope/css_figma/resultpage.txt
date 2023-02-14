@@ -1,0 +1,670 @@
+/* Result Page */
+
+position: relative;
+width: 1440px;
+height: 1024px;
+
+background: #FFFFFF;
+
+
+/* Frame 2 */
+
+position: absolute;
+width: 1440px;
+height: 1024px;
+left: 0px;
+top: 0px;
+
+background: #111111;
+
+
+/* The playlist just what you want it to be. Download your customized playlist. */
+
+position: absolute;
+width: 925px;
+height: 66px;
+left: 257px;
+top: 734px;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 38px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* back and forth buttons */
+
+position: absolute;
+width: 239px;
+height: 172px;
+left: 1174px;
+top: 867px;
+
+
+
+/* Group 2 */
+
+position: absolute;
+width: 239px;
+height: 172px;
+left: 1174px;
+top: 867px;
+
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 120px;
+height: 159px;
+left: 1174px;
+top: 867px;
+
+background: #111111;
+
+
+/* Rectangle 6 */
+
+position: absolute;
+width: 119px;
+height: 159px;
+left: 1294px;
+top: 880px;
+
+background: #111111;
+
+
+/* Group 3 */
+
+position: absolute;
+width: 190px;
+height: 71.55px;
+left: 1198px;
+top: 907.34px;
+
+
+
+/* image 6 */
+
+position: absolute;
+width: 71px;
+height: 70.89px;
+left: 1317px;
+top: 907.34px;
+
+background: url(image.png);
+
+
+/* image 3 */
+
+position: absolute;
+width: 71px;
+height: 70.89px;
+left: 1269px;
+top: 908px;
+
+background: url(image.png);
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Ellipse 4 */
+
+position: absolute;
+width: 106px;
+height: 110px;
+left: 802px;
+top: 914px;
+
+background: rgba(78, 19, 249, 0.2);
+
+
+/* Ellipse 6 */
+
+position: absolute;
+width: 280px;
+height: 280px;
+left: -44px;
+top: 820px;
+
+background: rgba(78, 19, 249, 0.2);
+
+
+/* Ellipse 5 */
+
+position: absolute;
+width: 308px;
+height: 295px;
+left: 1188px;
+top: -110px;
+
+background: rgba(78, 19, 249, 0.2);
+
+
+/* logo */
+
+position: absolute;
+width: 122px;
+height: 46px;
+left: 87px;
+top: 66px;
+
+
+
+/* SpotiFry */
+
+position: absolute;
+width: 122px;
+height: 46px;
+left: 87px;
+top: 66px;
+
+font-family: 'Acme';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 46px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* Logout */
+
+position: absolute;
+width: 122px;
+height: 97px;
+left: 173px;
+top: 34px;
+
+
+
+/* icon */
+
+position: absolute;
+width: 37px;
+height: 35px;
+left: 44px;
+top: 37px;
+
+background: url(download.png);
+
+
+/* chart */
+
+position: absolute;
+width: 775px;
+height: 450px;
+left: 340px;
+top: 183px;
+
+
+
+/* Group 10 */
+
+position: absolute;
+left: 87.48%;
+right: -0.65%;
+top: 0.91%;
+bottom: 85.33%;
+
+
+
+/* Instrument */
+
+position: absolute;
+left: 87.48%;
+right: -0.65%;
+top: 7.78%;
+bottom: 85.33%;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+
+color: #FFFFFF;
+
+
+
+/* 30% */
+
+position: absolute;
+left: 89.94%;
+right: 2.71%;
+top: 0.91%;
+bottom: 92.26%;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 30px;
+/* or 100% */
+
+color: #159241;
+
+
+
+/* Group 11 */
+
+position: absolute;
+left: 84.9%;
+right: -2.45%;
+top: 80.64%;
+bottom: 4.67%;
+
+
+
+/* Energy Level */
+
+position: absolute;
+left: 84.9%;
+right: -2.45%;
+top: 88.44%;
+bottom: 4.67%;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* 25% */
+
+position: absolute;
+left: 89.94%;
+right: 2.71%;
+top: 80.64%;
+bottom: 12.53%;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 30px;
+/* or 100% */
+
+color: #159241;
+
+
+
+/* Group 12 */
+
+position: absolute;
+left: -4.52%;
+right: 88%;
+top: 80.64%;
+bottom: 4.67%;
+
+
+
+/* Popularity */
+
+position: absolute;
+left: -4.52%;
+right: 88%;
+top: 88.44%;
+bottom: 4.67%;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* 20% */
+
+position: absolute;
+left: 0%;
+right: 92.65%;
+top: 80.64%;
+bottom: 12.53%;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 30px;
+/* or 100% */
+
+color: #159241;
+
+
+
+/* Group 13 */
+
+position: absolute;
+left: -2.06%;
+right: 88%;
+top: 36.67%;
+bottom: 49.11%;
+
+
+
+/* Loudness */
+
+position: absolute;
+left: -2.06%;
+right: 88%;
+top: 44%;
+bottom: 49.11%;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+
+color: #FFFFFF;
+
+
+
+/* 15% */
+
+position: absolute;
+left: 0%;
+right: 92.65%;
+top: 36.67%;
+bottom: 56.49%;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 30px;
+/* or 100% */
+
+color: #159241;
+
+
+
+/* Group 14 */
+
+position: absolute;
+left: -2.97%;
+right: 89.55%;
+top: 0.91%;
+bottom: 84%;
+
+
+
+/* Liveliness */
+
+position: absolute;
+left: -2.97%;
+right: 89.55%;
+top: 9.11%;
+bottom: 84%;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* or 150% */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* 10% */
+
+position: absolute;
+left: 0%;
+right: 92.65%;
+top: 0.91%;
+bottom: 92.26%;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 30px;
+/* or 100% */
+
+color: #159241;
+
+
+
+/* Ellipse 2 */
+
+position: absolute;
+left: 20.52%;
+right: 22.84%;
+top: 0%;
+bottom: 0%;
+
+background: #FFFFFF;
+box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.08);
+
+
+/* Frame */
+
+position: absolute;
+left: 23.23%;
+right: 25.54%;
+top: 4.78%;
+bottom: 4.76%;
+
+
+
+/* Vector */
+
+position: absolute;
+left: 36.63%;
+right: 0%;
+top: 0%;
+bottom: 50.9%;
+
+background: linear-gradient(225.7deg, #3EE158 7.72%, rgba(62, 225, 88, 0.71) 50.89%, rgba(62, 225, 88, 0.24) 91.45%, rgba(62, 225, 88, 0) 91.46%);
+
+
+/* Vector */
+
+position: absolute;
+left: 51.12%;
+right: 0%;
+top: 51.12%;
+bottom: 0%;
+
+background: #39CEF3;
+
+
+/* Vector */
+
+position: absolute;
+left: 3.91%;
+right: 50.9%;
+top: 60.3%;
+bottom: 0%;
+
+background: #39CEF3;
+
+
+/* Vector */
+
+position: absolute;
+left: 0%;
+right: 73.62%;
+top: 22.99%;
+bottom: 36.39%;
+
+background: rgba(243, 157, 57, 0.81);
+
+
+/* Vector */
+
+position: absolute;
+left: 11.79%;
+right: 60.07%;
+top: 3.9%;
+bottom: 67.93%;
+
+background: #39CEF3;
+
+
+/* Line 6 */
+
+position: absolute;
+left: 9.94%;
+right: 67.29%;
+top: 6.49%;
+bottom: 86.9%;
+
+border: 2px dashed #CDCDCD;
+
+
+/* Line 9 */
+
+position: absolute;
+left: 87.68%;
+right: -10.45%;
+top: 6.49%;
+bottom: 86.9%;
+
+border: 2px dashed #CDCDCD;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+
+/* Line 10 */
+
+position: absolute;
+left: 87.68%;
+right: -7.29%;
+top: 88.38%;
+bottom: 5.58%;
+
+border: 2px dashed #CDCDCD;
+transform: rotate(-180deg);
+
+
+/* Line 7 */
+
+position: absolute;
+left: 9.94%;
+right: 70.39%;
+top: 88.38%;
+bottom: 6.38%;
+
+border: 2px dashed #CDCDCD;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Line 8 */
+
+position: absolute;
+left: 9.94%;
+right: 77.35%;
+top: 42.6%;
+bottom: 57.4%;
+
+border: 2px dashed #CDCDCD;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+
+/* Download button */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 76px;
+height: 158px;
+left: 681px;
+top: 839px;
+
+border: 1px dashed #9747FF;
+border-radius: 5px;
+
+
+/* Property 1=Default */
+
+position: absolute;
+width: 36px;
+height: 49px;
+left: 20px;
+top: 20px;
+
+
+
+/* Arrow 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 25px;
+height: 0px;
+left: 18px;
+top: 0px;
+
+border: 3px solid #FFFFFF;
+transform: rotate(90deg);
+
+
+/* Line 11 (Stroke) */
+
+position: absolute;
+width: 24px;
+height: 2px;
+left: 6px;
+top: 31.1px;
+
+background: #FFFFFF;
+
+
+/* Property 1=Variant2 */
+
+position: absolute;
+width: 36px;
+height: 49px;
+left: 20px;
+top: 89px;
+
+
+
+/* Arrow 1 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 25px;
+height: 0px;
+left: 18px;
+top: 0px;
+
+border: 3px solid #FFFFFF;
+transform: rotate(90deg);
+
+
+/* Line 11 (Stroke) */
+
+position: absolute;
+width: 24px;
+height: 2px;
+left: 6px;
+top: 31.1px;
+
+background: #FFFFFF;

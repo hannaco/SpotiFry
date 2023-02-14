@@ -1,0 +1,185 @@
+/* Splash Page */
+
+position: relative;
+width: 1440px;
+height: 1024px;
+
+background: #FFFFFF;
+
+
+/* Frame 2 */
+
+position: absolute;
+width: 1440px;
+height: 1024px;
+left: 0px;
+top: 0px;
+
+background: #111111;
+
+
+/* Based on your recent favs, here’s what we recommend: */
+
+position: absolute;
+width: 569px;
+height: 114px;
+left: 151px;
+top: 289px;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 59px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Customize page button */
+
+position: absolute;
+width: 71px;
+height: 70px;
+left: 622px;
+top: 645px;
+
+
+
+/* image 6 */
+
+position: absolute;
+width: 71px;
+height: 70px;
+left: 622px;
+top: 645px;
+
+background: url(image.png);
+
+
+/* Ellipse 4 */
+
+position: absolute;
+width: 106px;
+height: 110px;
+left: 802px;
+top: 914px;
+
+background: rgba(78, 19, 249, 0.2);
+
+
+/* Ellipse 6 */
+
+position: absolute;
+width: 280px;
+height: 280px;
+left: -44px;
+top: 820px;
+
+background: rgba(78, 19, 249, 0.2);
+
+
+/* Ellipse 5 */
+
+position: absolute;
+width: 308px;
+height: 295px;
+left: 1175px;
+top: -147px;
+
+background: rgba(78, 19, 249, 0.2);
+
+
+/* Rectangle 7 */
+
+position: absolute;
+width: 504px;
+height: 504px;
+left: 856px;
+top: 279px;
+
+background: rgba(217, 217, 217, 0.3);
+border-radius: 60px;
+
+
+/* logo */
+
+position: absolute;
+width: 122px;
+height: 46px;
+left: 87px;
+top: 66px;
+
+
+
+/* SpotiFry */
+
+position: absolute;
+width: 122px;
+height: 46px;
+left: 87px;
+top: 66px;
+
+font-family: 'Acme';
+font-style: normal;
+font-weight: 400;
+font-size: 36px;
+line-height: 46px;
+/* identical to box height */
+display: flex;
+align-items: center;
+
+color: #FFFFFF;
+
+
+
+/* Logout */
+
+position: absolute;
+width: 116px;
+height: 98px;
+left: 170px;
+top: 35px;
+
+
+
+/* icon */
+
+position: absolute;
+width: 28px;
+height: 30px;
+left: 53px;
+top: 42px;
+
+background: url(download.png);
+
+
+/* Want to make it more fun? Try customize your own playlist! */
+
+position: absolute;
+width: 683px;
+height: 91px;
+left: 119px;
+top: 554px;
+
+font-family: 'Raleway';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 35px;
+
+color: #FFFFFF;
+
+
+
+/* image 2 */
+
+position: absolute;
+width: 400px;
+height: 399px;
+left: 908px;
+top: 336px;
+
+background: url(image.png);
+border-radius: 10px;

@@ -1,0 +1,254 @@
+/* Login/Signup */
+
+position: relative;
+width: 1512px;
+height: 982px;
+
+background: linear-gradient(180deg, #1E1E1E 0%, #000000 100%);
+
+
+/* Welcome to */
+
+position: absolute;
+width: 593px;
+height: 117px;
+left: 460px;
+top: 100px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 800;
+font-size: 84px;
+line-height: 102px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Group 1 */
+
+position: absolute;
+width: 703px;
+height: 183px;
+left: 405px;
+top: 217px;
+
+
+
+/* Sp tiFry */
+
+position: absolute;
+width: 703px;
+height: 183px;
+left: 405px;
+top: 217px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 800;
+font-size: 150px;
+line-height: 183px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* image 16 */
+
+position: absolute;
+width: 118px;
+height: 104px;
+left: 607px;
+top: 271px;
+
+background: url(image.png);
+
+
+/* Email address or username */
+
+position: absolute;
+width: 257px;
+height: 22px;
+left: 546px;
+top: 491px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Rectangle 2 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 420px;
+height: 54px;
+left: 546px;
+top: 518px;
+
+border: 2px solid #FFFFFF;
+border-radius: 10px;
+
+
+/* Email address or username */
+
+position: absolute;
+width: 338px;
+height: 29px;
+left: 562px;
+top: 531px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Password */
+
+position: absolute;
+width: 92px;
+height: 22px;
+left: 546px;
+top: 604px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 18px;
+line-height: 22px;
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Rectangle 5 */
+
+box-sizing: border-box;
+
+position: absolute;
+width: 420px;
+height: 54px;
+left: 546px;
+top: 627px;
+
+border: 2px solid #FFFFFF;
+border-radius: 10px;
+
+
+/* Password */
+
+position: absolute;
+width: 120px;
+height: 29px;
+left: 562px;
+top: 640px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Group 2 */
+
+position: absolute;
+width: 380px;
+height: 33px;
+left: 566px;
+top: 429px;
+
+
+
+/* To begin, log in with */
+
+position: absolute;
+width: 256px;
+height: 29px;
+left: 566px;
+top: 431px;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* image 17 */
+
+position: absolute;
+left: 55.42%;
+right: 37.43%;
+top: 43.69%;
+bottom: 52.95%;
+
+background: url(image.png), url(image.png);
+
+
+/* Sign in Button */
+
+position: absolute;
+width: 229px;
+height: 63px;
+left: 642px;
+top: 717px;
+
+
+
+/* Rectangle 4 */
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #1BD760;
+border-radius: 50px;
+
+
+/* Sign in */
+
+position: absolute;
+left: 30.57%;
+right: 31%;
+top: 23.81%;
+bottom: 22.22%;
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 800;
+font-size: 24px;
+line-height: 29px;
+text-align: center;
+
+color: #101010;
+
