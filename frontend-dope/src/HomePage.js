@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import NavBar from "./NavBar.js";
-import "./HomePage.css"
+import "./HomePage.css";
 import axios from "axios";
 
 const HomePage = () => {
@@ -68,37 +67,26 @@ const HomePage = () => {
         <> {/* if not logged in (no token) navigate back to login page */}
             {!window.localStorage.getItem("token") ? <Navigate replace to='/' />
                 :
-                <div>
-                    <div className="homepage">
-                        <button className="logout-button" onClick={LogOut}>
-                            Sign Out
-                        </button>
-                        <div>
-                            <h2>Hi, {userProfile.display_name}</h2>
-                            {/* 
-                        https://daveceddia.com/react-before-render/ 
-                        check for null/undefined value since render happens before data is ready
-                    */}
-                            {userProfile && userProfile.images && userProfile.images[0] ? (
-                                <img className="profileImg" src={userProfile.images[0].url} alt="" />
-                            ) : (
-                                <div>[No Profile Image]</div>
-                            )}
-                        </div>
-                        <div>
-                            <h4>Your default playlist</h4>
-                            <button
-                                className="logout-button"
-                                type="button"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    window.location.href = 'http://google.com'; /* NEED a link from BACKEND */
-                                }}
-                            > Click here </button>
-                            <SavedSongs />
-                        </div>
+                <div className="homepage">
+                    <button className="logout-button" onClick={LogOut}>
+                        Sign Out
+                    </button>
+                    <div>
+                        <h2>Hi, {userProfile.display_name}</h2>
+                        {/* 
+                    https://daveceddia.com/react-before-render/ 
+                    check for null/undefined value since render happens before data is ready
+                */}
+                        {userProfile && userProfile.images && userProfile.images[0] ? (
+                            <img className="profileImg" src={userProfile.images[0].url} alt="" />
+                        ) : (
+                            <div>[No Profile Image]</div>
+                        )}
                     </div>
-                    <NavBar />
+                    <div>
+                        <h4>Your Saved Songs</h4>
+                        <SavedSongs />
+                    </div>
                 </div>
             }
 
