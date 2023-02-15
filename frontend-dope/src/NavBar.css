@@ -1,0 +1,43 @@
+.nav {
+    background: #101010;
+    height: 12vh;
+    width: 100%;
+    z-index: 10;
+    position: sticky; 
+    bottom: 0;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    grid-template-rows: auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    align-items: center;
+}
+
+.option {
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+.option a {
+    font-size: calc(8px + 1vmin);
+    /* display: block; */
+    color: #969696;
+    /* text-align: center; */
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.option a:hover {
+    color: #ffffff;
+}
+
+.logo {
+    width: calc(3.5rem + 5vmin);
+  }
