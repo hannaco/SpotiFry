@@ -1,5 +1,5 @@
 .nav {
-    background: #1e1e1e;
+    background: #101010;
     height: 12vh;
     width: 100%;
     z-index: 10;
@@ -19,13 +19,25 @@
 
 .option {
     font-family: 'Montserrat', sans-serif;
-    background-color: #1e1e1e;
     border: none;
     color: white;
     font-size: 1.1rem;
     font-weight: bolder;
 }
 
-img {
+.option a {
+    font-size: calc(8px + 1vmin);
+    /* display: block; */
+    color: #969696;
+    /* text-align: center; */
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.option a:hover {
+    color: #ffffff;
+}
+
+.logo {
     width: calc(3.5rem + 5vmin);
   }

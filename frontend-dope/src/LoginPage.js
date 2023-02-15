@@ -36,7 +36,7 @@ function Login() {
         // if (!token && hash) { if token exists still compute new token
         if (hash) {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
-            console.log(token)
+            // console.log(token)
             window.localStorage.setItem("token", token)
             navigate('/homepage', {replace: true});
         }
