@@ -1,6 +1,10 @@
+import "./Customize.css";
+
 function Customize() {
     return(
-        <div>This is the playlist customization page</div>
+        <div className="customize">
+            <h1>This is the playlist customization page</h1>
+        </div>
     );
 }
 

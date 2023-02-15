@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import "./HomePage.css"
+import "./HomePage.css";
 import axios from "axios";
 
 const HomePage = () => {

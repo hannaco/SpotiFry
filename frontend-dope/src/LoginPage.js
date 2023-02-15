@@ -26,7 +26,7 @@ function Login() {
     ];
 
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
-    const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
+    // const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
     const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ function Login() {
             window.localStorage.setItem("token", token)
             navigate('/homepage', {replace: true});
         }
-    }, []);
+    }, [navigate]);
 
     const handleClick = async () => {
         window.location.href = `${AUTH_ENDPOINT}?client_id=${client_id}&response_type=${response_type}&redirect_uri=${redirect_uri}&scope=${scope.join(" ")}&show_dialog=true`;
