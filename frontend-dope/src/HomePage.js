@@ -11,7 +11,6 @@ const HomePage = () => {
     useEffect(() => {
         let token = window.localStorage.getItem("token");
         // console.log(token)
-        FetchData(); // example API call infra
         const SAVED_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/tracks`;
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
         
@@ -23,6 +22,7 @@ const HomePage = () => {
             });
             // console.log(data)
             setUserProfile(data);
+            FetchData(token); // example API call infra
         };
     
         const searchSavedSongs = async () => {
@@ -59,13 +59,21 @@ const HomePage = () => {
         navigate('/', {replace: true});
     }
 
-    const FetchData = () => {
-        fetch('http://localhost:5000/defaultplaylist').then((res) =>
-            res.json().then((data) => {
-                console.log(data);
-            })
-        );
-    }
+    const FetchData = async (token) => {
+        const data = {
+            token: token
+        };
+        const response = await fetch('http://localhost:5000/defaultplaylist', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        body: JSON.stringify(data),
+        });
+        const result = await response.text();
+        console.log(result);
+    };
 
     return (
         <> {/* if not logged in (no token) navigate back to login page */}
