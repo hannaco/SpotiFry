@@ -12,33 +12,37 @@ function NavBar() {
     }
 
     return (
-        <div className='nav'>
-            <div className="container">
-                <div className='option'>
-                    <img className="logo" src="/Spotify_Logo.png" alt="spotify logo" />
-                </div>
-                <div className='option'>
-                    <Link to='/homepage'>
-                        Home
-                    </Link>
-                </div>
-                <div className='option'>
-                    <Link to='/customize'>
-                        Customize
-                    </Link>
-                </div>
-                <div className='option'>
-                    <Link to='/team'> 
-                        Meet the team &#10084;
-                    </Link>
-                </div>
-                <div className='option'>
-                    <Link onClick={LogOut} to='/'>
-                    Log Out
-                    </Link>
+        <>
+        {!window.localStorage.getItem("token") ? <></> :
+            <div className='nav'>
+                <div className="container">
+                    <div className='option'>
+                        <img className="logo" src="/Spotify_Logo.png" alt="spotify logo" />
+                    </div>
+                    <div className='option'>
+                        <Link to='/homepage'>
+                            Home
+                        </Link>
+                    </div>
+                    <div className='option'>
+                        <Link to='/customize'>
+                            Customize
+                        </Link>
+                    </div>
+                    <div className='option'>
+                        <Link to='/team'> 
+                            Meet the team &#10084;
+                        </Link>
+                    </div>
+                    <div className='option'>
+                        <Link onClick={LogOut} to='/'>
+                        Log Out
+                        </Link>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
+        </>
     );
 
 }
