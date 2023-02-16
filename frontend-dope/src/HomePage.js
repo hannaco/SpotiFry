@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Navigate } from "react-router-dom";
-import NavBar from "./NavBar.js";
-import "./HomePage.css"
+import "./HomePage.css";
 import axios from "axios";
 
 const HomePage = () => {
     const [savedSongs, setSavedSongs] = useState([]);
     const [userProfile, setUserProfile] = useState([[]]);
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         let token = window.localStorage.getItem("token");
         // console.log(token)
-
+        FetchData(); // example API call infra
         const SAVED_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/tracks`;
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
 
@@ -60,8 +59,12 @@ const HomePage = () => {
         navigate('/', { replace: true });
     }
 
-    const DownLoad = {
-
+    const FetchData = () => {
+        fetch('http://localhost:5000/defaultplaylist').then((res) =>
+            res.json().then((data) => {
+                console.log(data);
+            })
+        );
     }
 
     return (
