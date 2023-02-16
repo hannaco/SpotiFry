@@ -7,13 +7,16 @@ const HomePage = () => {
     const [Token, setToken] = useState([]);
     const [clickText, setClickText] = useState("Click here");
     const [instructionText, setInstructionText] = useState("Creat playlists of your top artists 👇");
+    const [playlist, setPlaylist] = useState([[]]);
     const [userProfile, setUserProfile] = useState([[]]);
     const navigate = useNavigate();
+    
+    const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
+    const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
     
     useEffect(() => {
         let token = window.localStorage.getItem("token");
         // console.log(token)
-        const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
 
         const getUserInfo = async () => {
             const { data } = await axios.get(USER_PROFILE_ENDPOINT, {
@@ -36,13 +39,8 @@ const HomePage = () => {
         setToken(token);
     }, [])
 
-    const LogOut = () => {
-        window.localStorage.removeItem("token");
-        navigate('/', { replace: true });
-    }
-
     const FetchDefaultPlaylist = async () => {
-        setInstructionText("Successfully created!\nCheck out your Spotify! ✅")
+        setInstructionText("Successfully created! ✅ Click on the image to see!")
         setClickText("Create another?")
         const data = {
             token: Token
@@ -55,7 +53,15 @@ const HomePage = () => {
         body: JSON.stringify(data),
         });
         const playlistID = await response.text();
-        console.log(playlistID);
+        // console.log(playlistID);
+        
+        const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
+            headers: {
+                Authorization: `Bearer ${Token}`,
+            },
+        });
+        // console.log(returnPlaylist.data);
+        setPlaylist(returnPlaylist.data);
     };
 
     return (
@@ -64,9 +70,6 @@ const HomePage = () => {
             :
             <div>
                 <div className="homepage">
-                    <button className="logout-button" onClick={LogOut}>
-                        Sign Out
-                    </button>
                     <div>
                         <h2>Hi, {userProfile.display_name}</h2>
                         {/* 
@@ -86,6 +89,18 @@ const HomePage = () => {
                             type="button"
                             onClick={FetchDefaultPlaylist}
                         > {clickText}</button>
+                    </div>
+                    <div>
+                        {playlist && playlist.images ? (
+                            <div>
+                                <h4><i>{playlist.name}</i></h4>
+                                <a href={playlist.external_urls["spotify"]} target="_blank">
+                                    <img className="playlistImg" src={playlist.images[0].url} alt="" />
+                                </a>
+                            </div>
+                        ) : (
+                            <></>
+                        )}
                     </div>
                 </div>
             </div>
