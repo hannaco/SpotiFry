@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import "./HomePage.css";
 import axios from "axios";
 
@@ -9,7 +9,6 @@ const HomePage = () => {
     const [instructionText, setInstructionText] = useState("Creat playlists of your top artists 👇");
     const [playlist, setPlaylist] = useState([[]]);
     const [userProfile, setUserProfile] = useState([[]]);
-    const navigate = useNavigate();
     
     const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
     const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
