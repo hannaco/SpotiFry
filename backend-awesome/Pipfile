@@ -8,6 +8,7 @@ spotipy = "*"
 pymongo = "*"
 flask = "*"
 flask-cors = "*"
+pylint = "*"
 
 [dev-packages]
 
