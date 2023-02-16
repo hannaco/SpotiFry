@@ -63,11 +63,10 @@ const HomePage = () => {
         const data = {
             token: token
         };
-        const response = await fetch('http://localhost:5000/defaultplaylist', {
+        const response = await fetch('http://localhost:8000/defaultplaylist', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(data),
         });

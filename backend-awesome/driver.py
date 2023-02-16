@@ -5,7 +5,7 @@ import random
 
 # Initializing flask app
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 
 @app.route('/defaultplaylist', methods=['POST'])
 def default_playlist():
@@ -19,9 +19,7 @@ def default_playlist():
     sp = spotipy.Spotify(auth=token)
     user_id = sp.me()["id"]
 
-    print(user_id)
     top_artists = sp.current_user_top_artists(limit=5, time_range="short_term")
-    print(top_artists['items'])
 
     # Step 2: Get the user's top artists
     top_artists = sp.current_user_top_artists(limit=5, time_range="short_term")
@@ -37,9 +35,9 @@ def default_playlist():
         track_ids += [track["id"] for track in tracks]
     random.shuffle(track_ids)
     sp.user_playlist_add_tracks(user_id, new_playlist["id"], track_ids)
-    
+
     return(new_playlist['id'])
 
 # Running app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="localhost", port=8000, debug=True)
