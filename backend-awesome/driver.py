@@ -3,6 +3,10 @@ from flask_cors import CORS
 import spotipy
 import random
 
+import sys
+sys.path.append('database')
+from db_entry import add_user
+
 # Initializing flask app
 app = Flask(__name__)
 CORS(app)
@@ -19,7 +23,8 @@ def default_playlist():
     sp = spotipy.Spotify(auth=token)
     user_id = sp.me()["id"]
 
-    top_artists = sp.current_user_top_artists(limit=5, time_range="short_term")
+    # add user to database if not already registered
+    add_user(user_id)
 
     # Step 2: Get the user's top artists
     top_artists = sp.current_user_top_artists(limit=5, time_range="short_term")
