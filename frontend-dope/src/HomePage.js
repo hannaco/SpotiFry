@@ -4,14 +4,15 @@ import "./HomePage.css";
 import axios from "axios";
 
 const HomePage = () => {
-    const [savedSongs, setSavedSongs] = useState([]);
+    const [Token, setToken] = useState([]);
+    const [clickText, setClickText] = useState("Click here");
+    const [instructionText, setInstructionText] = useState("Creat playlists of your top artists 👇");
     const [userProfile, setUserProfile] = useState([[]]);
     const navigate = useNavigate();
     
     useEffect(() => {
         let token = window.localStorage.getItem("token");
         // console.log(token)
-        const SAVED_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/tracks`;
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
 
         const getUserInfo = async () => {
@@ -22,46 +23,29 @@ const HomePage = () => {
             });
             // console.log(data)
             setUserProfile(data);
-            FetchData(token); // example API call infra
-        };
-
-        const searchSavedSongs = async () => {
-            const { data } = await axios.get(SAVED_TRACKS_ENDPOINT, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-                params: {
-                    limit: 10,
-                },
-            });
-            setSavedSongs(data.items);
+            // FetchData(token); // example API call infra
         };
 
         if (token === '' || token === null) {
             return;
         } else {
             getUserInfo();
-            searchSavedSongs();
         }
+        // setToken would be taking place after the useEffect finished running
+        // thus we need to use token instead of Token in the above code
+        setToken(token);
     }, [])
-
-    const SavedSongs = () => {
-        return savedSongs.map((favorite) => (
-            <div key={favorite.track.id}>
-                <p>{favorite.track.name}</p>
-                {/* {favorite.track.images[0].url} */}
-            </div>
-        ));
-    };
 
     const LogOut = () => {
         window.localStorage.removeItem("token");
         navigate('/', { replace: true });
     }
 
-    const FetchData = async (token) => {
+    const FetchDefaultPlaylist = async () => {
+        setInstructionText("Successfully created!\nCheck out your Spotify! ✅")
+        setClickText("Create another?")
         const data = {
-            token: token
+            token: Token
         };
         const response = await fetch('http://localhost:8000/defaultplaylist', {
         method: 'POST',
@@ -70,47 +54,42 @@ const HomePage = () => {
         },
         body: JSON.stringify(data),
         });
-        const result = await response.text();
-        console.log(result);
+        const playlistID = await response.text();
+        console.log(playlistID);
     };
 
     return (
         <> {/* if not logged in (no token) navigate back to login page */}
-            {!window.localStorage.getItem("token") ? <Navigate replace to='/' />
-                :
-                <div>
-                    <div className="homepage">
-                        <button className="logout-button" onClick={LogOut}>
-                            Sign Out
-                        </button>
-                        <div>
-                            <h2>Hi, {userProfile.display_name}</h2>
-                            {/* 
-                        https://daveceddia.com/react-before-render/ 
-                        check for null/undefined value since render happens before data is ready
-                    */}
-                            {userProfile && userProfile.images && userProfile.images[0] ? (
-                                <img className="profileImg" src={userProfile.images[0].url} alt="" />
-                            ) : (
-                                <div>[No Profile Image]</div>
-                            )}
-                        </div>
-                        <div>
-                            <h4>Your default playlist</h4>
-                            <button
-                                className="logout-button"
-                                type="button"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    window.location.href = 'http://google.com'; /* NEED a link from BACKEND */
-                                }}
-                            > Click here </button>
-                            <SavedSongs />
-                        </div>
+        {!window.localStorage.getItem("token") ? <Navigate replace to='/' />
+            :
+            <div>
+                <div className="homepage">
+                    <button className="logout-button" onClick={LogOut}>
+                        Sign Out
+                    </button>
+                    <div>
+                        <h2>Hi, {userProfile.display_name}</h2>
+                        {/* 
+                            https://daveceddia.com/react-before-render/ 
+                            check for null/undefined value since render happens before data is ready
+                        */}
+                        {userProfile && userProfile.images && userProfile.images[0] ? (
+                            <img className="profileImg" src={userProfile.images[0].url} alt="" />
+                        ) : (
+                            <div>[No Profile Image]</div>
+                        )}
+                    </div>
+                    <div>
+                        <h4>{instructionText}</h4>
+                        <button
+                            className="logout-button"
+                            type="button"
+                            onClick={FetchDefaultPlaylist}
+                        > {clickText}</button>
                     </div>
                 </div>
-            }
-
+            </div>
+        }
         </>
 
     );
