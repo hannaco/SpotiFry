@@ -10,10 +10,11 @@ const HomePage = () => {
     const [playlist, setPlaylist] = useState([[]]);
     const [userProfile, setUserProfile] = useState([[]]);
     
-    const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
     const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
     
     useEffect(() => {
+        const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
+        
         let token = window.localStorage.getItem("token");
         // console.log(token)
 
@@ -93,7 +94,7 @@ const HomePage = () => {
                         {playlist && playlist.images ? (
                             <div>
                                 <h4><i>{playlist.name}</i></h4>
-                                <a href={playlist.external_urls["spotify"]} target="_blank">
+                                <a href={playlist.external_urls["spotify"]} target="_blank" rel="noreferrer">
                                     <img className="playlistImg" src={playlist.images[0].url} alt="" />
                                 </a>
                             </div>
