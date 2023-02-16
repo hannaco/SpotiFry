@@ -101,7 +101,6 @@ const HomePage = () => {
                             <SavedSongs />
                         </div>
                     </div>
-                    <NavBar />
                 </div>
             }
 
