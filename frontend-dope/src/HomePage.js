@@ -7,11 +7,11 @@ const HomePage = () => {
     const [savedSongs, setSavedSongs] = useState([]);
     const [userProfile, setUserProfile] = useState([[]]);
     const navigate = useNavigate();
-
+    
     useEffect(() => {
         let token = window.localStorage.getItem("token");
         // console.log(token)
-
+        FetchData(); // example API call infra
         const SAVED_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/tracks`;
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
         
@@ -57,6 +57,14 @@ const HomePage = () => {
     const LogOut = () => {
         window.localStorage.removeItem("token");
         navigate('/', {replace: true});
+    }
+
+    const FetchData = () => {
+        fetch('http://localhost:5000/defaultplaylist').then((res) =>
+            res.json().then((data) => {
+                console.log(data);
+            })
+        );
     }
 
     return (
