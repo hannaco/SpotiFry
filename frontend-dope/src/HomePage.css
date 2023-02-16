@@ -22,11 +22,16 @@
     cursor: pointer;
 }
 
+.container {
+    /* display: flex; */
+    column-gap: 50px;
+}
+
 .profileImg {
     object-fit: cover;
     border-radius: 50%;
-    height: 150px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
 }
 
 .playlistImg {

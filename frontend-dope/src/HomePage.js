@@ -69,18 +69,18 @@ const HomePage = () => {
             :
             <div>
                 <div className="homepage">
-                    <div>
-                        <h2>Hi, {userProfile.display_name}</h2>
-                        {/* 
-                            https://daveceddia.com/react-before-render/ 
-                            check for null/undefined value since render happens before data is ready
-                        */}
-                        {userProfile && userProfile.images && userProfile.images[0] ? (
-                            <img className="profileImg" src={userProfile.images[0].url} alt="" />
-                        ) : (
-                            <div>[No Profile Image]</div>
-                        )}
-                    </div>
+                    {userProfile && userProfile.images && userProfile.images[0] ? (
+                        <div className="container">
+                            <div>
+                                <img className="profileImg" src={userProfile.images[0].url} alt="" />
+                            </div>
+                            <div className="greeting">
+                                <h2>Hi, {userProfile.display_name}</h2>
+                            </div>
+                        </div>
+                    ) : (
+                        <div>[No Profile Image]</div>
+                    )}
                     <div>
                         <h4>{instructionText}</h4>
                         <button
