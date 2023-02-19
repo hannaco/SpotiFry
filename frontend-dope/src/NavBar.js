@@ -13,6 +13,14 @@ function NavBar() {
 
     return (
         <div className='nav'>
+<<<<<<<<< Temporary merge branch 1
+            <div className='container'>
+                <div className="option"><img src="/Spotify_Logo.png" alt="spotify logo" /></div>
+                <button className="option" onClick={() => console.log("home")}>Home</button>
+                <button className="option" onClick={() => console.log("customize")} >Customize</button>
+                <button className="option" onClick={() => console.log("meet the team")}>Meet the Team</button>
+                <button className="option" onClick={LogOut}>Sign Out</button>
+=========
             <div className="container">
                 <div className='option'>
                     <img className="logo" src="/Spotify_Logo.png" alt="spotify logo" />
@@ -28,17 +36,19 @@ function NavBar() {
                     </Link>
                 </div>
                 <div className='option'>
-                    <Link to='/team'>
+                    <Link to='/team'> 
                         Meet the team &#10084;
                     </Link>
                 </div>
                 <div className='option'>
                     <Link onClick={LogOut} to='/'>
-                        Log Out
+                    Log Out
                     </Link>
                 </div>
+>>>>>>>>> Temporary merge branch 2
             </div>
-        </div>
+        }
+        </>
     );
 
 }
