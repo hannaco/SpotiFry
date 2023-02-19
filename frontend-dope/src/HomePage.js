@@ -9,12 +9,12 @@ const HomePage = () => {
     const [instructionText, setInstructionText] = useState("Creat playlists of your top artists 👇");
     const [playlist, setPlaylist] = useState([[]]);
     const [userProfile, setUserProfile] = useState([[]]);
-    
+
     const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
-    
+
     useEffect(() => {
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
-        
+
         let token = window.localStorage.getItem("token");
         // console.log(token)
 
@@ -46,15 +46,15 @@ const HomePage = () => {
             token: Token
         };
         const response = await fetch('http://localhost:8000/defaultplaylist', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
         });
         const playlistID = await response.text();
         // console.log(playlistID);
-        
+
         const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
             headers: {
                 Authorization: `Bearer ${Token}`,
@@ -66,7 +66,6 @@ const HomePage = () => {
 
     return (
         <> {/* if not logged in (no token) navigate back to login page */}
-<<<<<<<<< Temporary merge branch 1
             {!window.localStorage.getItem("token") ? <Navigate replace to='/' />
                 :
                 <div>
@@ -104,7 +103,7 @@ const HomePage = () => {
             }
 
 =========
-        {! window.localStorage.getItem("token") ? <Navigate replace to='/'/> 
+        {! window.localStorage.getItem("token") ? <Navigate replace to='/'/>
         :
         <div className="homepage">
             <button className="logout-button" onClick={LogOut}>
@@ -112,8 +111,8 @@ const HomePage = () => {
             </button>
             <div>
                 <h2>Hi, {userProfile.display_name}</h2>
-                {/* 
-                    https://daveceddia.com/react-before-render/ 
+                {/*
+                    https://daveceddia.com/react-before-render/
                     check for null/undefined value since render happens before data is ready
                 */}
                 {userProfile && userProfile.images && userProfile.images[0] ? (
@@ -128,8 +127,7 @@ const HomePage = () => {
             </div>
         </div>
         }
-        
->>>>>>>>> Temporary merge branch 2
+
         </>
 
     );
