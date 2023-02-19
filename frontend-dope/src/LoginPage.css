@@ -3,7 +3,8 @@
 }
 
 .header {
-  background-color: black;
+  background:linear-gradient(#1e1e1e,transparent);
+  background-color:black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

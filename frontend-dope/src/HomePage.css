@@ -1,6 +1,7 @@
 .homepage {
     text-align: center;
-    background-color: black;
+    background:linear-gradient(#1e1e1e,transparent);
+    background-color:black;
     min-height: 88vh;
     display: flex;
     flex-direction: column;
