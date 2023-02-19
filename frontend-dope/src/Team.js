@@ -15,14 +15,14 @@ function Team() {
                 </div>
                 <div className="team-one">
                     <div className="image-one">
-                        <img src="/headshot.jpeg" alt="hanna"></img>
+                        <img src="/headshot.jpeg" alt="joseph"></img>
                     </div>
                     <div className="bio-one">
                         Joseph Pinto
                         <div className="info">some text about year, major, interests, what you’re doing after graduation, hobbies, involvement, etc.</div>
                     </div>
                     <div className="image-two">
-                        <img src="/headshot.jpeg" alt="hanna"></img>
+                        <img src="/headshot.jpeg" alt="julia"></img>
                     </div>
                     <div className="bio-two">
                         Julia Offerman
@@ -34,7 +34,7 @@ function Team() {
                     <div className="bio-three">
                         Hanna Co
                         <div className="info">
-                            Hanna is a four-year computer science major, minoring in Digital Humanities. 
+                            Hanna is a fourth-year computer science major, minoring in Digital Humanities. 
                             Following her graduation from UCLA, she will be pursuing a Masters in Computer Science. In her
                             free time, she enjoys reading and baking.
                         </div>
@@ -42,18 +42,18 @@ function Team() {
                 </div>
                 <div className="team-two">
                     <div className="image-four">
-                        <img src="/headshot.jpeg" alt="hanna"></img>
+                        <img src="/headshot.jpeg" alt="suzie"></img>
                     </div>
                     <div className="bio-four">
                         Suzie Xu
                         <div className="info">some text about year, major, interests, what you’re doing after graduation, hobbies, involvement, etc.</div>
                     </div>
                     <div className="image-five">
-                        <img src="/headshot.jpeg" alt="hanna"></img>
+                        <img src="/bryan_headshot.png" alt="bryan"></img>
                     </div>
                     <div className="bio-five">
                         Bryan Tang
-                        <div className="info">some text about year, major, interests, what you’re doing after graduation, hobbies, involvement, etc.</div>
+                        <div className="info">Bryan is a fourth-year computer science & applied math major. He will be pursuing a Master degree in computer science post graduation. He loves playing Texas Hold'em poker.</div>
                     </div>
                 </div>
             </div>
