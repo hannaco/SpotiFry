@@ -9,3 +9,38 @@
     font-size: calc(10px + 2vmin);
     color: white;
 }
+
+.inputcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+.upload {
+    padding: 1rem 5rem;
+    border-radius: 5rem;
+    background-color: #1BD760;
+    color: black;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: calc(8px + 1vmin);
+    cursor: pointer;
+}
+
+
+.generate {
+    padding: 1rem 5rem;
+    border-radius: 5rem;
+    background-color: #1BD760;
+    color: black;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: calc(1rem + 1vmin);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.slidecontainer {
+    margin: auto;
+}
