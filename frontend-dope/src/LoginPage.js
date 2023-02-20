@@ -38,14 +38,14 @@ function Login() {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             // console.log(token)
             window.localStorage.setItem("token", token)
-            navigate('/homepage', {replace: true});
+            navigate('/homepage', { replace: true });
         }
     }, [navigate]);
 
     const handleClick = async () => {
         window.location.href = `${AUTH_ENDPOINT}?client_id=${client_id}&response_type=${response_type}&redirect_uri=${redirect_uri}&scope=${scope.join(" ")}&show_dialog=true`;
     };
- 
+
     return (
         <div className="Login">
             <header className="header">
