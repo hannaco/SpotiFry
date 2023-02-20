@@ -77,7 +77,7 @@ function Customize() {
                     <CssTextField
                         required
                         id="outlined-required"
-                        label="Artist"
+                        label="Recommended Artist"
                         defaultValue="Beyonce"
                         sx={{ input: { color: 'white' } }}
                         InputLabelProps={{
@@ -87,7 +87,7 @@ function Customize() {
                     <CssTextField
                         required
                         id="outlined-required"
-                        label="Genre"
+                        label="Recommended Genre"
                         defaultValue="Hip-pop"
                         sx={{ input: { color: 'white' } }}
                         InputLabelProps={{
