@@ -1,10 +1,14 @@
 import "./Customize.css";
+import Slider from "./Slider";
 
 function Customize() {
-    return(
+    return (
         <div className="customize">
-            <h1>This is the playlist customization page</h1>
+            <h4>Only a few steps away from your personalized playlist...</h4>
+            <Slider />
+
         </div>
+
     );
 }
 
