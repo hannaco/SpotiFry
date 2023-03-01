@@ -25,11 +25,15 @@ function Team() {
                         </div>
                     </div>
                     <div className="image-two">
-                        <img src="/headshot.jpeg" alt="julia"></img>
+                        <img src="/julia_headshot.jpeg" alt="julia"></img>
                     </div>
                     <div className="bio-two">
                         Julia Offerman
-                        <div className="info">some text about year, major, interests, what you’re doing after graduation, hobbies, involvement, etc.</div>
+                        <div className="info">
+                        Julia is a fourth-year Computer Science student. After graduation, 
+                        she will be working as a software engineer in cloud databases. In her 
+                        free time, she loves to travel and cook.
+                        </div>
                     </div>
                     <div className="image-three">
                         <img src="/hanna_headshot.png" alt="hanna"></img>
