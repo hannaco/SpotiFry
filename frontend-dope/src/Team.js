@@ -15,11 +15,14 @@ function Team() {
                 </div>
                 <div className="team-one">
                     <div className="image-one">
-                        <img src="/headshot.jpeg" alt="joseph"></img>
+                        <img src="/joe_headshot.jpeg" alt="joseph"></img>
                     </div>
                     <div className="bio-one">
                         Joseph Pinto
-                        <div className="info">some text about year, major, interests, what you’re doing after graduation, hobbies, involvement, etc.</div>
+                        <div className="info">
+                        Joe is a fourth-year computer science major. Following graduation he will 
+                        be pursuing a career in data analytics. Joe is also a member of the men’s rowing team.
+                        </div>
                     </div>
                     <div className="image-two">
                         <img src="/headshot.jpeg" alt="julia"></img>
