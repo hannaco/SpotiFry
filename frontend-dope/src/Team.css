@@ -1,11 +1,125 @@
 .team {
     text-align: center;
-    background-color: black;
-    min-height: 88vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+    min-height: 88vh;
+    width: 100%;
+    background:linear-gradient(#1e1e1e,transparent);
+    background-color:black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.info {
+    font-size: calc(2vmin);
+}
+
+img {
+    height: 100%; 
+    width: 100%;
+    object-fit: contain;
+}
+
+.team-container {
+    min-height: 88vh;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 30vh 60vh 60vh auto;
+    grid-template-areas: 
+    "header"
+    "teamOne"
+    "teamTwo"
+    ".";
+    row-gap: 20px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.header-section {
+    grid-area: header;
+    align-items: center;
+}
+
+.summary {
+    font-size: calc(12px + 2vmin);
+    margin: 1%;
+}
+
+.team-one {
+    grid-area: teamOne;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1vh 1fr 1fr;
+    grid-template-areas: 
+    "imageOne imageTwo imageThree"
+    "imageOne imageTwo imageThree"
+    "imageOne imageTwo imageThree"
+    ". . ."
+    "bioOne bioTwo bioThree"
+    "bioOne bioTwo bioThree";
+}
+
+.image-one {
+    grid-area: imageOne;
+    margin: 3%;
+}
+
+.bio-one {
+    grid-area: bioOne;
+    margin: 3%;
+}
+
+.image-two {
+    grid-area: imageTwo;
+    margin: 3%;
+}
+
+.bio-two {
+    grid-area: bioTwo;
+    margin: 3%;
+}
+
+.image-three {
+    grid-area: imageThree;
+    margin: 3%;
+}
+
+.bio-three {
+    grid-area: bioThree;
+    margin: 3%;
+}
+
+.team-two {
+    grid-area: teamTwo;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1vh 1fr 1fr;
+    grid-template-areas: 
+    ". imageFour imageFour imageFour . imageFive imageFive imageFive ."
+    ". imageFour imageFour imageFour . imageFive imageFive imageFive ."
+    ". imageFour imageFour imageFour . imageFive imageFive imageFive ."
+    ". . . . . . . . ."
+    ". bioFour bioFour bioFour . bioFive bioFive bioFive ."
+    ". bioFour bioFour bioFour . bioFive bioFive bioFive .";
+}
+
+.image-four {
+    grid-area: imageFour;
+    margin: 3%;
+}
+
+.bio-four {
+    grid-area: bioFour;
+    margin: 3%;
+}
+
+.image-five {
+    grid-area: imageFive;
+    margin: 3%;
+}
+
+.bio-five {
+    grid-area: bioFive;
+    margin: 3%;
 }
