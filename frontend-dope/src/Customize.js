@@ -5,7 +5,12 @@ import Slider from '@mui/material/Slider';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { Navigate } from "react-router-dom";
+import axios from "axios";
 import { useEffect, useState } from "react";
+
+let playlistName = "Hello World"
+let playlistGenre = "Hip-pop"
+let playlistArtist = "Beyonce"
 
 function Customize() {
     const [Danceability, setDanceability] = useState(1);
@@ -15,10 +20,24 @@ function Customize() {
     const [Loudness, setLoudness] = useState(1);
     const [Valence, setValence] = useState(1);
     const [Tempo, setTempo] = useState(1);
-    const [Musicality, setMusicality] = useState(1);
-    const [Name, setName] = useState("Hello World");
-    const [Artist, setArtist] = useState("Beyonce");
-    const [Genre, setGenre] = useState("Hip-popH");
+    // const [Musicality, setMusicality] = useState(1);
+    const [Name, setName] = useState(playlistName);
+    const [Artist, setArtist] = useState(playlistArtist);
+    const [Genre, setGenre] = useState(playlistGenre);
+    const [userProfile, setUserProfile] = useState([[]]);
+    const [Token, setToken] = useState([]);
+
+    const handleNameInputChange = event => {
+        playlistName = event.target.value
+    };
+
+    const handleArtistInputChange = event => {
+        playlistArtist = event.target.value
+    };
+
+    const handleGenreInputChange = event => {
+        playlistGenre = event.target.value
+    };
 
     // const DiscreteSlider = (props) => {
 
@@ -39,12 +58,76 @@ function Customize() {
     //     );
     // }
 
+    useEffect(() => {
+        const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
+        
+        let token = window.localStorage.getItem("token");
+        // console.log(token)
+
+        const getUserInfo = async () => {
+            const { data } = await axios.get(USER_PROFILE_ENDPOINT, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            console.log(data)
+            setUserProfile(data);
+        };
+
+        if (token === '' || token === null) {
+            return;
+        } else {
+            getUserInfo();
+        }
+        // setToken would be taking place after the useEffect finished running
+        // thus we need to use token instead of Token in the above code
+        setToken(token);
+    }, [])
+
     const CssTextField = styled(TextField)({
         '& input:valid + fieldset': {
             borderColor: 'green',
             borderWidth: 2,
         }
     });
+
+    const FetchCustomPlaylist = async () => {
+        setName(playlistName)
+        setArtist(playlistArtist)
+        setGenre(playlistGenre)
+        const data = {
+            token: Token,
+            playlist_name: Name,
+            seed_artist_name: Artist,
+            seed_genres: Genre,
+            target_danceability: Danceability,
+            target_acousticness: Accousticness,
+            target_energy: Energy,
+            target_instrumentalness: Instrumentalness, 
+            target_loudness: Loudness,
+            target_valence: Valence,
+            target_tempo: Tempo,
+        };
+
+        console.log(data)
+        // const response = await fetch('http://localhost:8000/defaultplaylist', {
+        // method: 'POST',
+        // headers: {
+        //     'Content-Type': 'application/json',
+        // },
+        // body: JSON.stringify(data),
+        // });
+        // const playlistID = await response.text();
+        // // console.log(playlistID);
+        
+        // const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
+        //     headers: {
+        //         Authorization: `Bearer ${Token}`,
+        //     },
+        // });
+        // // console.log(returnPlaylist.data);
+        // setPlaylist(returnPlaylist.data);
+    };
 
     return (
     <> {/* if not logged in (no token) navigate back to login page */}
@@ -75,7 +158,8 @@ function Customize() {
                             required
                             id="outlined-required"
                             label="Playlist Name"
-                            defaultValue="Hello World"
+                            defaultValue={playlistName}
+                            onChange= {handleNameInputChange}
                             varient="filled"
                             sx={{ input: { color: 'white' } }}
                             InputLabelProps={{
@@ -86,7 +170,8 @@ function Customize() {
                             required
                             id="outlined-required"
                             label="Recommended Artist"
-                            defaultValue="Beyonce"
+                            defaultValue={playlistArtist}
+                            onChange= {handleArtistInputChange}
                             sx={{ input: { color: 'white' } }}
                             InputLabelProps={{
                                 style: { color: 'green' },
@@ -96,7 +181,8 @@ function Customize() {
                             required
                             id="outlined-required"
                             label="Recommended Genre"
-                            defaultValue="Hip-pop"
+                            defaultValue={playlistGenre}
+                            onChange= {handleGenreInputChange}
                             sx={{ input: { color: 'white' } }}
                             InputLabelProps={{
                                 style: { color: 'green' },
@@ -104,17 +190,7 @@ function Customize() {
                         />
                     </Box>
                     <button className="generate"
-                        onClick={() => {
-                            alert('clicked');
-                            console.log(Danceability)
-                            console.log(Accousticness)
-                            console.log(Energy)
-                            console.log(Instrumentalness)
-                            console.log(Loudness)
-                            console.log(Valence)
-                            console.log(Tempo)
-                            console.log(Musicality)
-                        }}
+                        onClick={FetchCustomPlaylist}
                     >
                         Generate
                     </button>
@@ -214,7 +290,7 @@ function Customize() {
                                     sx={{ width: 300, color: 'success.main', }}
                                 />
                             </div>
-                        Musicality 
+                        {/* Musicality 
                             <div className="Musicality">
                                 <Slider
                                     defaultValue={1}
@@ -226,7 +302,7 @@ function Customize() {
                                     max={10}
                                     sx={{ width: 300, color: 'success.main', }}
                                 />
-                            </div>
+                            </div> */}
                     </Box>
                 </div>
             </div>
