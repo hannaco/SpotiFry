@@ -2,7 +2,7 @@ import "./Customize.css";
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import TextField from '@mui/material/TextField';
+import {TextField }from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Navigate } from "react-router-dom";
 import axios from "axios";
@@ -20,7 +20,6 @@ function Customize() {
     const [Loudness, setLoudness] = useState(1);
     const [Valence, setValence] = useState(1);
     const [Tempo, setTempo] = useState(1);
-    // const [Musicality, setMusicality] = useState(1);
     const [Name, setName] = useState(playlistName);
     const [Artist, setArtist] = useState(playlistArtist);
     const [Genre, setGenre] = useState(playlistGenre);
@@ -39,30 +38,11 @@ function Customize() {
         playlistGenre = event.target.value
     };
 
-    // const DiscreteSlider = (props) => {
-
-    //     return (
-    //         <div className="slidecontainer">
-    //             <Slider
-    //                 defaultValue={1}
-    //                 valueLabelDisplay="auto"
-    //                 value={props.val}
-    //                 onChange={props.func}
-    //                 step={1}
-    //                 marks
-    //                 min={1}
-    //                 max={10}
-    //                 sx={{ width: 300, color: 'success.main', }}
-    //             />
-    //         </div>
-    //     );
-    // }
-
     useEffect(() => {
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
         
         let token = window.localStorage.getItem("token");
-        // console.log(token)
+        console.log(token)
 
         const getUserInfo = async () => {
             const { data } = await axios.get(USER_PROFILE_ENDPOINT, {
@@ -95,10 +75,24 @@ function Customize() {
         setName(playlistName)
         setArtist(playlistArtist)
         setGenre(playlistGenre)
+
+        const SEARCH_ENDPOINT = `https://api.spotify.com/v1/search`;
+        const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
+
+        const { res } = await axios.get(SEARCH_ENDPOINT, {
+            headers: {
+                Authorization: `Bearer ${Token}`,
+                q: Artist,
+                type: "artist"
+            },
+        });
+
+        console.log(res)
+
         const data = {
             token: Token,
             playlist_name: Name,
-            seed_artist_name: Artist,
+            seed_artists: res.items[0].id,
             seed_genres: Genre,
             target_danceability: Danceability,
             target_acousticness: Accousticness,
@@ -110,23 +104,22 @@ function Customize() {
         };
 
         console.log(data)
-        // const response = await fetch('http://localhost:8000/defaultplaylist', {
-        // method: 'POST',
-        // headers: {
-        //     'Content-Type': 'application/json',
-        // },
-        // body: JSON.stringify(data),
-        // });
-        // const playlistID = await response.text();
-        // // console.log(playlistID);
+        const response = await fetch('http://localhost:8000/customPlaylist', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        });
+        const playlistID = await response.text();
+        // console.log(playlistID);
         
-        // const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
-        //     headers: {
-        //         Authorization: `Bearer ${Token}`,
-        //     },
-        // });
-        // // console.log(returnPlaylist.data);
-        // setPlaylist(returnPlaylist.data);
+        const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
+            headers: {
+                Authorization: `Bearer ${Token}`,
+            },
+        });
+        console.log(returnPlaylist.data);
     };
 
     return (
