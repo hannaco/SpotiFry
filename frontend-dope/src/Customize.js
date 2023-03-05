@@ -9,7 +9,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 let playlistName = "Hello World"
-let playlistGenre = "Hip-pop"
+let playlistGenres = 'pop'
 let playlistArtist = "Beyonce"
 
 function Customize() {
@@ -22,7 +22,7 @@ function Customize() {
     const [Tempo, setTempo] = useState(1);
     const [Name, setName] = useState(playlistName);
     const [Artist, setArtist] = useState(playlistArtist);
-    const [Genre, setGenre] = useState(playlistGenre);
+    const [Genres, setGenres] = useState([playlistGenres]);
     const [userProfile, setUserProfile] = useState([[]]);
     const [Token, setToken] = useState([]);
 
@@ -35,7 +35,7 @@ function Customize() {
     };
 
     const handleGenreInputChange = event => {
-        playlistGenre = event.target.value
+        playlistGenres = event.target.value
     };
 
     useEffect(() => {
@@ -74,26 +74,15 @@ function Customize() {
     const FetchCustomPlaylist = async () => {
         setName(playlistName)
         setArtist(playlistArtist)
-        setGenre(playlistGenre)
-
-        const SEARCH_ENDPOINT = `https://api.spotify.com/v1/search`;
+        setGenres(playlistGenres.split(','))
+        // const SEARCH_ENDPOINT = `https://api.spotify.com/v1/search`;
         const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
-
-        const { res } = await axios.get(SEARCH_ENDPOINT, {
-            headers: {
-                Authorization: `Bearer ${Token}`,
-                q: Artist,
-                type: "artist"
-            },
-        });
-
-        console.log(res)
 
         const data = {
             token: Token,
             playlist_name: Name,
-            seed_artists: res.items[0].id,
-            seed_genres: Genre,
+            seed_artists: Artist,
+            seed_genres: Genres,
             target_danceability: Danceability,
             target_acousticness: Accousticness,
             target_energy: Energy,
@@ -174,7 +163,7 @@ function Customize() {
                             required
                             id="outlined-required"
                             label="Recommended Genre"
-                            defaultValue={playlistGenre}
+                            defaultValue={playlistGenres}
                             onChange= {handleGenreInputChange}
                             sx={{ input: { color: 'white' } }}
                             InputLabelProps={{
