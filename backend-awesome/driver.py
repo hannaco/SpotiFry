@@ -51,9 +51,6 @@ def custom_playlist():
     # Step 1: User authorization
     data = request.get_json()
     token = data['token']
-    
-    print(data['seed_genres'])
-
 
     sp = spotipy.Spotify(auth=token)
     user_id = sp.me()["id"]
@@ -61,15 +58,32 @@ def custom_playlist():
     # add user to database if not already registered
     add_user(user_id)
 
-    # Step 2: Get the user's top artists
-    valid_genres = sp.recommendation_genre_seeds()
+    # Step 2: convert seed_artists from strings to IDs:
+    print(data)
+
+    artist_ids = []
+    for artist_str in data['seed_artists']:
+        results = sp.search(q=artist_str,type='artist')
+        cand_id = results['artists']['items'][0]['id']
+        if cand_id:
+            artist_ids.append(cand_id)
+
+    #valid_genres = sp.recommendation_genre_seeds()
+    
     # Step 3: Create a new playlist for the user
     playlist_name = data['playlist_name']
-    playlist_description = "A playlist created with the Spotify recommendations API"
+    playlist_description = "A playlist created with SpotiFry"
+    
     recommendations = sp.recommendations(
-        seed_artists=data['seed_artists'],
+        seed_artists=artist_ids,
         seed_genres=data['seed_genres'],
-        target_danceability=data['target_danceability']
+        target_danceability=data['target_danceability'],
+        target_acousticness=data['target_acousticness'],
+        target_energy=data['target_energy'],
+        target_instrumentalness=data['target_instrumentalness'],
+        target_loudness=data['target_loudness'],
+        target_valence=data['target_valence'],
+        target_tempo=data['target_tempo']
         )
 
     track_ids = [track['id'] for track in recommendations['tracks']]
@@ -78,6 +92,8 @@ def custom_playlist():
         name=playlist_name, public=True, description=playlist_description)
 
     sp.playlist_add_items(playlist_id=playlist['id'], items=track_ids)
+
+    # TODO: Add created playlist information into database, associated with user
 
     return(playlist['id'])
 

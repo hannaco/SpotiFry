@@ -24,7 +24,7 @@ const HomePage = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            // console.log(data)
+            console.log(data)
             setUserProfile(data);
             // FetchData(token); // example API call infra
         };
