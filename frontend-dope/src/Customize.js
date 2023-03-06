@@ -23,7 +23,6 @@ function Customize() {
     const [Name, setName] = useState(playlistName);
     const [Artist, setArtist] = useState(playlistArtist);
     const [Genres, setGenres] = useState([playlistGenres]);
-    const [userProfile, setUserProfile] = useState([[]]);
     const [Token, setToken] = useState([]);
 
     const handleNameInputChange = event => {
@@ -50,8 +49,7 @@ function Customize() {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log(data)
-            setUserProfile(data);
+            console.log(data);
         };
 
         if (token === '' || token === null) {
@@ -75,7 +73,6 @@ function Customize() {
         setName(playlistName)
         setArtist(playlistArtist)
         setGenres(playlistGenres.split(','))
-        // const SEARCH_ENDPOINT = `https://api.spotify.com/v1/search`;
         const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
 
         const data = {
@@ -181,19 +178,6 @@ function Customize() {
                     <Box sx={{
                         width: 300, display: 'block', typography: 'body1', m: 2
                     }}>
-                        Danceability 
-                            <div className="Danceability">
-                                <Slider
-                                    defaultValue={1}
-                                    valueLabelDisplay="auto"
-                                    onChange={(e) => setDanceability(e.target.value)}
-                                    step={1}
-                                    marks
-                                    min={1}
-                                    max={10}
-                                    sx={{ width: 300, color: 'success.main', }}
-                                />
-                            </div>
                         Accousticness 
                             <div className="Accousticness">
                                 <Slider
@@ -207,6 +191,20 @@ function Customize() {
                                     sx={{ width: 300, color: 'success.main', }}
                                 />
                             </div>
+                        Danceability 
+                            <div className="Danceability">
+                                <Slider
+                                    defaultValue={1}
+                                    valueLabelDisplay="auto"
+                                    onChange={(e) => setDanceability(e.target.value)}
+                                    step={1}
+                                    marks
+                                    min={1}
+                                    max={10}
+                                    sx={{ width: 300, color: 'success.main', }}
+                                />
+                            </div>
+                        
                         Energy 
                             <div className="Energy">
                                 <Slider
@@ -246,12 +244,12 @@ function Customize() {
                                     sx={{ width: 300, color: 'success.main', }}
                                 />
                             </div>
-                        Valence 
-                            <div className="Valence">
+                        Tempo 
+                            <div className="Tempo">
                                 <Slider
                                     defaultValue={1}
                                     valueLabelDisplay="auto"
-                                    onChange={(e) => setValence(e.target.value)}
+                                    onChange={(e) => setTempo(e.target.value)}
                                     step={1}
                                     marks
                                     min={1}
@@ -259,12 +257,12 @@ function Customize() {
                                     sx={{ width: 300, color: 'success.main', }}
                                 />
                             </div>
-                        Tempo 
-                            <div className="Tempo">
+                        Valence 
+                            <div className="Valence">
                                 <Slider
                                     defaultValue={1}
                                     valueLabelDisplay="auto"
-                                    onChange={(e) => setTempo(e.target.value)}
+                                    onChange={(e) => setValence(e.target.value)}
                                     step={1}
                                     marks
                                     min={1}
