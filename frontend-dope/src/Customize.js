@@ -8,9 +8,9 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-let playlistName = "Hello World"
+let playlistName = "My Cool Playlist!"
 let playlistGenres = 'pop'
-let playlistArtist = "Beyonce"
+let playlistArtists = "Beyonce"
 
 function Customize() {
     const [Danceability, setDanceability] = useState(1);
@@ -20,9 +20,9 @@ function Customize() {
     const [Loudness, setLoudness] = useState(1);
     const [Valence, setValence] = useState(1);
     const [Tempo, setTempo] = useState(1);
-    const [Name, setName] = useState(playlistName);
-    const [Artist, setArtist] = useState(playlistArtist);
-    const [Genres, setGenres] = useState([playlistGenres]);
+    // const [Name, setName] = useState(playlistName);
+    // const [Artist, setArtist] = useState([playlistArtists]);
+    // const [Genres, setGenres] = useState([playlistGenres]);
     const [userProfile, setUserProfile] = useState([[]]);
     const [Token, setToken] = useState([]);
 
@@ -31,7 +31,7 @@ function Customize() {
     };
 
     const handleArtistInputChange = event => {
-        playlistArtist = event.target.value
+        playlistArtists = event.target.value
     };
 
     const handleGenreInputChange = event => {
@@ -72,17 +72,17 @@ function Customize() {
     });
 
     const FetchCustomPlaylist = async () => {
-        setName(playlistName)
-        setArtist(playlistArtist)
-        setGenres(playlistGenres.split(','))
+        // setName(playlistName)
+        // setArtist(playlistArtists.split(','))
+        // setGenres(playlistGenres.split(','))
         // const SEARCH_ENDPOINT = `https://api.spotify.com/v1/search`;
         const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
 
         const data = {
             token: Token,
-            playlist_name: Name,
-            seed_artists: Artist,
-            seed_genres: Genres,
+            playlist_name: playlistName,
+            seed_artists: playlistArtists,
+            seed_genres: playlistGenres,
             target_danceability: Danceability,
             target_acousticness: Accousticness,
             target_energy: Energy,
@@ -92,7 +92,6 @@ function Customize() {
             target_tempo: Tempo,
         };
 
-        console.log(data)
         const response = await fetch('http://localhost:8000/customPlaylist', {
         method: 'POST',
         headers: {
@@ -152,7 +151,7 @@ function Customize() {
                             required
                             id="outlined-required"
                             label="Recommended Artist"
-                            defaultValue={playlistArtist}
+                            defaultValue={playlistArtists}
                             onChange= {handleArtistInputChange}
                             sx={{ input: { color: 'white' } }}
                             InputLabelProps={{
