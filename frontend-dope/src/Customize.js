@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MenuItem from '@mui/material/MenuItem';
+import { valid_genres } from "./Constants";
 
 let playlistName = "My Cool Playlist!"
 let playlistGenres = 'pop'
@@ -110,116 +111,6 @@ function Customize() {
         }
     });
 
-    const genres = [
-        { value: 'acoustic', label: 'acoustic' },
-        { value: 'afrobeat', label: 'afrobeat' },
-        { value: 'alt-rock', label: 'alt-rock' },
-        { value: 'alternative', label: 'alternative' },
-        { value: 'ambient', label: 'ambient' },
-        { value: 'anime', label: 'anime' },
-        { value: 'black-metal', label: 'black-metal' },
-        { value: 'bluegrass', label: 'bluegrass' },
-        { value: 'blues', label: 'blues' },
-        { value: 'bossanova', label: 'bossanova' },
-        { value: 'brazil', label: 'brazil' },
-        { value: 'breakbeat', label: 'breakbeat' },
-        { value: 'british', label: 'british' },
-        { value: 'cantopop', label: 'cantopop' },
-        { value: 'chicago-house', label: 'chicago-house' },
-        { value: 'children', label: 'children' },
-        { value: 'chill', label: 'chill' },
-        { value: 'classical', label: 'classical' },
-        { value: 'club', label: 'club' },
-        { value: 'comedy', label: 'comedy' },
-        { value: 'country', label: 'country' },
-        { value: 'dance', label: 'dance' },
-        { value: 'dancehall', label: 'dancehall' },
-        { value: 'death-metal', label: 'death-metal' },
-        { value: 'deep-house', label: 'deep-house' },
-        { value: 'detroit-techno', label: 'detroit-techno' },
-        { value: 'disco', label: 'disco' },
-        { value: 'disney', label: 'disney' },
-        { value: 'drum-and-bass', label: 'drum-and-bass' },
-        { value: 'dubstep', label: 'dubstep' },
-        { value: 'electronic', label: 'electronic' },
-        { value: 'emo', label: 'emo' },
-        { value: 'folk', label: 'folk' },
-        { value: 'french', label: 'french' },
-        { value: 'funk', label: 'funk' },
-        { value: 'garage', label: 'garage' },
-        { value: 'german', label: 'german' },
-        { value: 'gospel', label: 'gospel' },
-        { value: 'goth', label: 'goth' },
-        { value: 'grindcore', label: 'grindcore' },
-        { value: 'groove', label: 'groove' },
-        { value: 'grunge', label: 'grunge' },
-        { value: 'guitar', label: 'guitar' },
-        { value: 'happy', label: 'happy' },
-        { value: 'hard-rock', label: 'hard-rock' },
-        { value: 'hardcore', label: 'hardcore' },
-        { value: 'hardstyle', label: 'hardstyle' },
-        { value: 'heavy-metal', label: 'heavy-metal' },
-        { value: 'hip-hop', label: 'hip-hop' },
-        { value: 'holidays', label: 'holidays' },
-        { value: 'honky-tonk', label: 'honky-tonk' },
-        { value: 'house', label: 'house' },
-        { value: 'indian', label: 'indian' },
-        { value: 'indie', label: 'indie' },
-        { value: 'indie-pop', label: 'indie-pop' },
-        { value: 'industrial', label: 'industrial' },
-        { value: 'iranian', label: 'iranian' },
-        { value: 'j-dance', label: 'j-dance' },
-        { value: 'j-idol', label: 'j-idol' },
-        { value: 'j-pop', label: 'j-pop' },
-        { value: 'j-rock', label: 'j-rock' },
-        { value: 'jazz', label: 'jazz' },
-        { value: 'k-pop', label: 'k-pop' },
-        { value: 'latin', label: 'latin' },
-        { value: 'malay', label: 'malay' },
-        { value: 'mandopop', label: 'mandopop' },
-        { value: 'metal', label: 'metal' },
-        { value: 'metal-misc', label: 'metal-misc' },
-        { value: 'metalcore', label: 'metalcore' },
-        { value: 'minimal-techno', label: 'minimal-techno' },
-        { value: 'movies', label: 'movies' },
-        { value: 'new-age', label: 'new-age' },
-        { value: 'new-release', label: 'new-release' },
-        { value: 'opera', label: 'opera' },
-        { value: 'pagode', label: 'pagode' },
-        { value: 'party', label: 'party' },
-        { value: 'philippines-opm', label: 'philippines-opm' },
-        { value: 'piano', label: 'piano' },
-        { value: 'pop', label: 'pop' },
-        { value: 'pop-film', label: 'pop-film' },
-        { value: 'power-pop', label: 'power-pop' },
-        { value: 'progressive-house', label: 'progressive-house' },
-        { value: 'psych-rock', label: 'psych-rock' },
-        { value: 'punk', label: 'punk' },
-        { value: 'punk-rock', label: 'punk-rock' },
-        { value: 'r-n-b', label: 'r-n-b' },
-        { value: 'rainy-day', label: 'rainy-day' },
-        { value: 'reggae', label: 'reggae' },
-        { value: 'road-trip', label: 'road-trip' },
-        { value: 'rock', label: 'rock' },
-        { value: 'romance', label: 'romance' },
-        { value: 'sad', label: 'sad' },
-        { value: 'salsa', label: 'salsa' },
-        { value: 'samba', label: 'samba' },
-        { value: 'show-tunes', label: 'show-tunes' },
-        { value: 'sleep', label: 'sleep' },
-        { value: 'soul', label: 'soul' },
-        { value: 'spanish', label: 'spanish' },
-        { value: 'study', label: 'study' },
-        { value: 'summer', label: 'summer' },
-        { value: 'swedish', label: 'swedish' },
-        { value: 'synth-pop', label: 'synth-pop' },
-        { value: 'tango', label: 'tango' },
-        { value: 'techno', label: 'techno' },
-        { value: 'turkish', label: 'turkish' },
-        { value: 'work-out', label: 'work-out' },
-        { value: 'world-music', label: 'world-music' },
-    ]
-
     return (
         <> {/* if not logged in (no token) navigate back to login page */}
             {!window.localStorage.getItem("token") ? <Navigate replace to='/' />
@@ -280,7 +171,7 @@ function Customize() {
                                         style: { color: 'white' },
                                     }}
                                 >
-                                    {genres.map((option) => (
+                                    {valid_genres.map((option) => (
                                         <MenuItem key={option.value} value={option.value}>
                                             {option.label}
                                         </MenuItem>
