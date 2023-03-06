@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import MenuItem from '@mui/material/MenuItem';
+import { textAlign } from "@mui/system";
 
 let playlistName = "Hello World"
 let playlistGenres = 'pop'
@@ -219,6 +220,7 @@ function Customize() {
         { value: 'world-music', label: 'world-music' },
     ]
 
+
     return (
         <> {/* if not logged in (no token) navigate back to login page */}
             {!window.localStorage.getItem("token") ? <Navigate replace to='/' />
@@ -274,10 +276,11 @@ function Customize() {
                                     label="Recommended Genre"
                                     placeholder={playlistGenres}
                                     onChange={handleGenreInputChange}
-                                    sx={{ input: { color: 'white' } }}
                                     InputLabelProps={{
                                         style: { color: 'white' },
                                     }}
+                                    sx={{ '& .MuiInputBase-input': { color: 'white', textAlign: 'left' } }}
+
                                 >
                                     {genres.map((option) => (
                                         <MenuItem key={option.value} value={option.value}>
