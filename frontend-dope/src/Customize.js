@@ -281,7 +281,7 @@ function Customize() {
                                     sx={{ '& .MuiInputBase-input': { color: 'white', textAlign: 'left' } }}
 
                                 >
-                                    {valid_genres.map((option) => (
+                                    {genres.map((option) => (
                                         <MenuItem key={option.value} value={option.value}>
                                             {option.label}
                                         </MenuItem>
