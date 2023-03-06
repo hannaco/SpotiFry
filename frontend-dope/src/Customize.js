@@ -2,7 +2,7 @@ import "./Customize.css";
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import {TextField }from '@mui/material';
+import { TextField }from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { Navigate } from "react-router-dom";
 import axios from "axios";
@@ -137,34 +137,34 @@ function Customize() {
                             required
                             id="outlined-required"
                             label="Playlist Name"
-                            defaultValue={playlistName}
+                            placeholder={playlistName}
                             onChange= {handleNameInputChange}
                             varient="filled"
                             sx={{ input: { color: 'white' } }}
                             InputLabelProps={{
-                                style: { color: 'green' },
+                                style: { color: 'white' },
                             }}
                         />
                         <CssTextField
                             required
                             id="outlined-required"
                             label="Recommended Artist"
-                            defaultValue={playlistArtist}
+                            placeholder={playlistArtist}
                             onChange= {handleArtistInputChange}
                             sx={{ input: { color: 'white' } }}
                             InputLabelProps={{
-                                style: { color: 'green' },
+                                style: { color: 'white' },
                             }}
                         />
                         <CssTextField
                             required
                             id="outlined-required"
                             label="Recommended Genre"
-                            defaultValue={playlistGenres}
+                            placeholder={playlistGenres}
                             onChange= {handleGenreInputChange}
                             sx={{ input: { color: 'white' } }}
                             InputLabelProps={{
-                                style: { color: 'green' },
+                                style: { color: 'white' },
                             }}
                         />
                     </Box>
