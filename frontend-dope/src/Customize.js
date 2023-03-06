@@ -261,7 +261,7 @@ function Customize() {
                                     required
                                     id="outlined-required"
                                     label="Recommended Artist"
-                                    placeholder={playlistArtist}
+                                    placeholder={playlistArtists}
                                     onChange={handleArtistInputChange}
                                     sx={{ input: { color: 'white' } }}
                                     InputLabelProps={{
