@@ -2,50 +2,43 @@ import "./Customize.css";
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { TextField } from '@mui/material';
+import { TextField, MenuItem } from '@mui/material';
 import { styled } from '@mui/material/styles';
+// import { styled } from '@mui/material/styles';
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import MenuItem from '@mui/material/MenuItem';
 import { valid_genres } from "./Constants";
 
-
-let playlistName = "My Cool Playlist!"
-let playlistGenres = 'pop'
-let playlistArtists = "Beyonce"
-
 function Customize() {
-    const [Danceability, setDanceability] = useState(1);
-    const [Accousticness, setAccousticness] = useState(1);
-    const [Energy, setEnergy] = useState(1);
-    const [Instrumentalness, setInstrumentalness] = useState(1);
-    const [Loudness, setLoudness] = useState(1);
-    const [Valence, setValence] = useState(1);
-    const [Tempo, setTempo] = useState(1);
-    // const [Name, setName] = useState(playlistName);
-    // const [Artist, setArtist] = useState([playlistArtists]);
-    // const [Genres, setGenres] = useState([playlistGenres]);
+
+    const [formData, setFormData] = useState({
+        Artists: "",
+        Name: "",
+        Genre: "pop",
+        Danceability: 1,
+        Accousticness: 1,
+        Energy: 1,
+        Instrumentalness: 1,
+        Loudness: 1,
+        Valence: 1,
+        Tempo:1,
+      });
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
     const [userProfile, setUserProfile] = useState([[]]);
+
     const [Token, setToken] = useState([]);
-
-    const handleNameInputChange = event => {
-        playlistName = event.target.value
-    };
-
-    const handleArtistInputChange = event => {
-        playlistArtists = event.target.value
-    };
-
-    const handleGenreInputChange = event => {
-        playlistGenres = event.target.value
-    };
 
     useEffect(() => {
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
 
         let token = window.localStorage.getItem("token");
-        console.log(token)
+        // console.log(token)
 
         const getUserInfo = async () => {
             const { data } = await axios.get(USER_PROFILE_ENDPOINT, {
@@ -53,7 +46,6 @@ function Customize() {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log(data);
         };
 
         if (token === '' || token === null) {
@@ -67,26 +59,23 @@ function Customize() {
     }, [])
 
     const FetchCustomPlaylist = async () => {
-        // setName(playlistName)
-        // setArtist(playlistArtists.split(','))
-        // setGenres(playlistGenres.split(','))
-        // const SEARCH_ENDPOINT = `https://api.spotify.com/v1/search`;
+
         const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
 
         const data = {
             token: Token,
-            playlist_name: playlistName,
-            seed_artists: playlistArtists,
-            seed_genres: playlistGenres,
-            target_danceability: Danceability,
-            target_acousticness: Accousticness,
-            target_energy: Energy,
-            target_instrumentalness: Instrumentalness,
-            target_loudness: Loudness,
-            target_valence: Valence,
-            target_tempo: Tempo,
+            playlist_name: formData.Name,
+            seed_artists: formData.Artists,
+            seed_genres: formData.Genre,
+            target_danceability: formData.Danceability,
+            target_acousticness: formData.Accousticness,
+            target_energy: formData.Energy,
+            target_instrumentalness: formData.Instrumentalness,
+            target_loudness: formData.Loudness,
+            target_valence: formData.Valence,
+            target_tempo: formData.Tempo,
         };
-
+        // console.log(data)
         const response = await fetch('http://localhost:8000/customPlaylist', {
             method: 'POST',
             headers: {
@@ -102,15 +91,16 @@ function Customize() {
                 Authorization: `Bearer ${Token}`,
             },
         });
-        console.log(returnPlaylist.data);
+        // console.log(returnPlaylist.data);
     };
 
-    const CssTextField = styled(TextField)({
-        '& input:valid + fieldset': {
-            borderColor: 'green',
-            borderWidth: 2,
-        }
-    });
+    // const CssTextField = styled(TextField)({
+    //     '& input:valid + fieldset': {
+    //         borderColor: 'green',
+    //         borderWidth: 2,
+    //     }
+    // });
+    const CssTextField = TextField
 
     return (
         <> {/* if not logged in (no token) navigate back to login page */}
@@ -136,25 +126,28 @@ function Customize() {
                                 }}
                                 noValidate
                                 autoComplete="off"
+                                onSubmit={FetchCustomPlaylist}
                             >
                                 <CssTextField
-                                    required
-                                    id="outlined-required"
-                                    label="Playlist Name"
-                                    placeholder={playlistName}
-                                    onChange={handleNameInputChange}
-                                    varient="filled"
-                                    sx={{ input: { color: 'white' } }}
-                                    InputLabelProps={{
-                                        style: { color: 'white' },
-                                    }}
+                                required
+                                name='Name'
+                                id="outlined-required"
+                                label="Playlist Name"
+                                defaultValue={formData.Name}
+                                onChange={handleInputChange}
+                                varient="filled"
+                                sx={{ input: { color: 'white' } }}
+                                InputLabelProps={{
+                                    style: { color: 'white' },
+                                }}
                                 />
                                 <CssTextField
                                     required
+                                    name='Artists'
                                     id="outlined-required"
                                     label="Recommended Artist"
-                                    placeholder={playlistArtists}
-                                    onChange={handleArtistInputChange}
+                                    defaultValue={formData.Artists}
+                                    onChange={handleInputChange}
                                     sx={{ input: { color: 'white' } }}
                                     InputLabelProps={{
                                         style: { color: 'white' },
@@ -162,11 +155,12 @@ function Customize() {
                                 />
                                 <CssTextField
                                     required
+                                    name='Genre'
                                     id="outlined-required"
                                     select
+                                    value={formData.Genre}
                                     label="Recommended Genre"
-                                    placeholder={playlistGenres}
-                                    onChange={handleGenreInputChange}
+                                    onChange={handleInputChange}
                                     InputLabelProps={{
                                         style: { color: 'white' },
                                     }}
@@ -194,8 +188,9 @@ function Customize() {
                                 <div className="Accousticness">
                                     <Slider
                                         defaultValue={1}
+                                        name='Accousticness'
                                         valueLabelDisplay="auto"
-                                        onChange={(e) => setAccousticness(e.target.value)}
+                                        onChange={handleInputChange}
                                         step={1}
                                         marks
                                         min={1}
@@ -207,8 +202,9 @@ function Customize() {
                                 <div className="Danceability">
                                     <Slider
                                         defaultValue={1}
+                                        name='Danceability'
                                         valueLabelDisplay="auto"
-                                        onChange={(e) => setDanceability(e.target.value)}
+                                        onChange={handleInputChange}
                                         step={1}
                                         marks
                                         min={1}
@@ -216,13 +212,13 @@ function Customize() {
                                         sx={{ width: 300, color: 'success.main', }}
                                     />
                                 </div>
-
                                 Energy
                                 <div className="Energy">
                                     <Slider
                                         defaultValue={1}
+                                        name='Energy'
                                         valueLabelDisplay="auto"
-                                        onChange={(e) => setEnergy(e.target.value)}
+                                        onChange={handleInputChange}
                                         step={1}
                                         marks
                                         min={1}
@@ -234,8 +230,9 @@ function Customize() {
                                 <div className="Instrumentalness">
                                     <Slider
                                         defaultValue={1}
+                                        name='Instrumentalness'
                                         valueLabelDisplay="auto"
-                                        onChange={(e) => setInstrumentalness(e.target.value)}
+                                        onChange={handleInputChange}
                                         step={1}
                                         marks
                                         min={1}
@@ -247,8 +244,9 @@ function Customize() {
                                 <div className="Loudness">
                                     <Slider
                                         defaultValue={1}
+                                        name='Loudness'
                                         valueLabelDisplay="auto"
-                                        onChange={(e) => setLoudness(e.target.value)}
+                                        onChange={handleInputChange}
                                         step={1}
                                         marks
                                         min={1}
@@ -260,8 +258,9 @@ function Customize() {
                                 <div className="Tempo">
                                     <Slider
                                         defaultValue={1}
+                                        name='Valence'
                                         valueLabelDisplay="auto"
-                                        onChange={(e) => setTempo(e.target.value)}
+                                        onChange={handleInputChange}
                                         step={1}
                                         marks
                                         min={1}
@@ -273,8 +272,9 @@ function Customize() {
                                 <div className="Valence">
                                     <Slider
                                         defaultValue={1}
+                                        name='Tempo'
                                         valueLabelDisplay="auto"
-                                        onChange={(e) => setValence(e.target.value)}
+                                        onChange={handleInputChange}
                                         step={1}
                                         marks
                                         min={1}
