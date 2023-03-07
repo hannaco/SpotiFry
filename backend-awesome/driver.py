@@ -59,10 +59,9 @@ def custom_playlist():
     add_user(user_id)
 
     # Step 2: convert seed_artists from strings to IDs:
-    print(data)
 
     artist_ids = []
-    for artist_str in data['seed_artists']:
+    for artist_str in data['seed_artists'].split(','):
         results = sp.search(q=artist_str,type='artist')
         cand_id = results['artists']['items'][0]['id']
         if cand_id:
