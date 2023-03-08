@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./HomePage.css";
 import axios from "axios";
 
 const HomePage = () => {
     const [Token, setToken] = useState([]);
-    const [clickText, setClickText] = useState("Click here");
-    const [instructionText, setInstructionText] = useState("Creat playlists of your top artists 👇");
     const [playlist, setPlaylist] = useState([[]]);
     const [userProfile, setUserProfile] = useState([[]]);
+    const navigate = useNavigate();
     
     const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
     
@@ -40,8 +39,6 @@ const HomePage = () => {
     }, [])
 
     const FetchDefaultPlaylist = async () => {
-        setInstructionText("Successfully created! ✅ Click on the image to see!")
-        setClickText("Create another?")
         const data = {
             token: Token
         };
@@ -62,6 +59,7 @@ const HomePage = () => {
         });
         // console.log(returnPlaylist.data);
         setPlaylist(returnPlaylist.data);
+        navigate('/result', {state : playlist});
     };
 
     return (
@@ -83,24 +81,12 @@ const HomePage = () => {
                         <div>[No Profile Image]</div>
                     )}
                     <div>
-                        <h4>{instructionText}</h4>
+                        <h4>Creat playlists of your top artists 👇</h4>
                         <button
                             className="logout-button"
                             type="button"
                             onClick={FetchDefaultPlaylist}
-                        > {clickText}</button>
-                    </div>
-                    <div>
-                        {playlist && playlist.images ? (
-                            <div>
-                                <h4><i>{playlist.name}</i></h4>
-                                <a href={playlist.external_urls["spotify"]} target="_blank" rel="noreferrer">
-                                    <img className="playlistImg" src={playlist.images[0].url} alt="" />
-                                </a>
-                            </div>
-                        ) : (
-                            <></>
-                        )}
+                        >Click here</button>
                     </div>
                 </div>
             </div>

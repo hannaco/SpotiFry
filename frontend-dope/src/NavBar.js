@@ -30,6 +30,11 @@ function NavBar() {
                         </Link>
                     </div>
                     <div className='option'>
+                        <Link to='/result'>
+                            Result
+                        </Link>
+                    </div>
+                    <div className='option'>
                         <Link to='/team'> 
                             Meet the team &#10084;
                         </Link>
