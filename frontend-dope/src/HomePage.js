@@ -59,7 +59,7 @@ const HomePage = () => {
         });
         // console.log(returnPlaylist.data);
         setPlaylist(returnPlaylist.data);
-        navigate('/result', {state : playlist});
+        navigate('/result', {state : returnPlaylist.data});
     };
 
     return (
