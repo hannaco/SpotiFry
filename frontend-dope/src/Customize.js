@@ -3,9 +3,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { TextField, MenuItem } from '@mui/material';
-import { styled } from '@mui/material/styles';
 // import { styled } from '@mui/material/styles';
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { valid_genres } from "./Constants";
@@ -13,8 +12,8 @@ import { valid_genres } from "./Constants";
 function Customize() {
 
     const [formData, setFormData] = useState({
-        Artists: "",
-        Name: "",
+        Artists: "Lauv",
+        Name: "Test",
         Genre: "pop",
         Danceability: 1,
         Accousticness: 1,
@@ -30,28 +29,15 @@ function Customize() {
         setFormData({ ...formData, [name]: value });
     };
 
-    const [userProfile, setUserProfile] = useState([[]]);
-
     const [Token, setToken] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
-
         let token = window.localStorage.getItem("token");
         // console.log(token)
 
-        const getUserInfo = async () => {
-            const { data } = await axios.get(USER_PROFILE_ENDPOINT, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-        };
-
         if (token === '' || token === null) {
             return;
-        } else {
-            getUserInfo();
         }
         // setToken would be taking place after the useEffect finished running
         // thus we need to use token instead of Token in the above code
@@ -91,7 +77,8 @@ function Customize() {
                 Authorization: `Bearer ${Token}`,
             },
         });
-        // console.log(returnPlaylist.data);
+        console.log(returnPlaylist.data);
+        navigate('/result', {state : returnPlaylist.data});
     };
 
     // const CssTextField = styled(TextField)({
