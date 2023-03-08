@@ -32,7 +32,7 @@ const ResultPage = () => {
                                 <div>
                                     <h4>Successfully created! ✅ Click on the image to see!</h4>
                                     <button
-                                        className="logout-button"
+                                        className="button"
                                         type="button"
                                         onClick={FetchCustomizePlaylist}
                                     >See all your customized playlists</button>
@@ -46,7 +46,7 @@ const ResultPage = () => {
                             <div>
                                 <h4>Go Create a playlist! 👇</h4>
                                 <button
-                                    className="logout-button"
+                                    className="button"
                                     type="button"
                                     onClick={GoToCustomize}
                                 >Customize</button>

@@ -77,7 +77,7 @@ function Customize() {
                 Authorization: `Bearer ${Token}`,
             },
         });
-        console.log(returnPlaylist.data);
+        // console.log(returnPlaylist.data);
         navigate('/result', {state : returnPlaylist.data});
     };
 

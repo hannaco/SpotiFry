@@ -32,7 +32,7 @@ def default_playlist():
 
     # Step 2: Get the user's top artists
     top_artists = sp.current_user_top_artists(limit=5, time_range="short_term")
-    if top_artists == []: # if user doesn't have any top artists in short term
+    if top_artists['items'] == []: # if user doesn't have any top artists in short term
         top_artists = sp.current_user_top_artists(limit=5, time_range="long_term")
     # Step 3: Create a new playlist for the user
     playlist_name = "My Top Artists Playlist (Created by SpotiFry)"
