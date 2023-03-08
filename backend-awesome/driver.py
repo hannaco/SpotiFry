@@ -5,7 +5,7 @@ import random
 
 import sys
 sys.path.append('database')
-from db_entry import add_user
+from db_entry import add_user, add_playlist
 
 # Initializing flask app
 app = Flask(__name__)
@@ -51,7 +51,6 @@ def custom_playlist():
     # Step 1: User authorization
     data = request.get_json()
     token = data['token']
-
     sp = spotipy.Spotify(auth=token)
     user_id = sp.me()["id"]
 
@@ -75,7 +74,7 @@ def custom_playlist():
     
     recommendations = sp.recommendations(
         seed_artists=artist_ids,
-        seed_genres=data['seed_genres'],
+        seed_genres=[data['seed_genres']],
         target_danceability=data['target_danceability'],
         target_acousticness=data['target_acousticness'],
         target_energy=data['target_energy'],
@@ -92,7 +91,7 @@ def custom_playlist():
 
     sp.playlist_add_items(playlist_id=playlist['id'], items=track_ids)
 
-    # TODO: Add created playlist information into database, associated with user
+    add_playlist(playlist['id'], user_id, playlist_name, playlist['external_urls']['spotify'], artist_ids, data['seed_genres'], data['target_danceability'], data['target_acousticness'], data['target_energy'], data['target_instrumentalness'], data['target_loudness'], data['target_valence'],data['target_tempo'])
 
     return(playlist['id'])
 
