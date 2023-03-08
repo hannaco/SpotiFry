@@ -32,7 +32,8 @@ def default_playlist():
 
     # Step 2: Get the user's top artists
     top_artists = sp.current_user_top_artists(limit=5, time_range="short_term")
-
+    if top_artists == []: # if user doesn't have any top artists in short term
+        top_artists = sp.current_user_top_artists(limit=5, time_range="long_term")
     # Step 3: Create a new playlist for the user
     playlist_name = "My Top Artists Playlist (Created by SpotiFry)"
     new_playlist = sp.user_playlist_create(user_id, playlist_name)
@@ -103,7 +104,7 @@ def custom_playlist():
 
     return playlist['id']
 
-@app.route('/getplaylists', methods=['POST'])
+@app.route('/getplaylists', methods=['GET'])
 def get_playlists():
     '''
     generates default playlist for given profile based on top 5 artists
@@ -117,7 +118,7 @@ def get_playlists():
     playlists_data = get_playlists_from_user(user_id)
     
 
-    return 'hi'
+    return playlists_data
 
 
 # Running app
