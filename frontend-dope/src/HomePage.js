@@ -23,7 +23,7 @@ const HomePage = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            console.log(data)
+            // console.log(data)
             setUserProfile(data);
             // FetchData(token); // example API call infra
         };
@@ -36,6 +36,26 @@ const HomePage = () => {
         // setToken would be taking place after the useEffect finished running
         // thus we need to use token instead of Token in the above code
         setToken(token);
+       
+        const temp_data = {
+            token: token
+        }
+        
+        // UNCOMMENT BELOW TO TEST /getplaylists endpoint and print data to console
+
+    //     const test_endpoint = async () => {
+    //         const response = await fetch('http://localhost:8000/getplaylists', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify(temp_data),
+    //             });
+
+    //         const playlists_data = await response.json();
+    //         console.log(playlists_data);
+    //     }
+    //     test_endpoint();
     }, [])
 
     const FetchDefaultPlaylist = async () => {
