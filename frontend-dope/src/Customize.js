@@ -61,24 +61,26 @@ function Customize() {
             target_valence: formData.Valence,
             target_tempo: formData.Tempo,
         };
-        // console.log(data)
-        const response = await fetch('http://localhost:8000/customPlaylist', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-        const playlistID = await response.text();
-        // console.log(playlistID);
-
-        const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
-            headers: {
-                Authorization: `Bearer ${Token}`,
-            },
-        });
-        // console.log(returnPlaylist.data);
-        navigate('/result', {state : returnPlaylist.data});
+        try {
+            const response = await fetch('http://localhost:8000/customPlaylist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const playlistID = await response.text();
+    
+            const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
+                headers: {
+                    Authorization: `Bearer ${Token}`,
+                },
+            });
+            navigate('/result', {state : returnPlaylist.data});
+        } catch (error) {
+            console.error(error);
+            // TODO HANDLE ERRORS HERE
+        }        
     };
 
     // const CssTextField = styled(TextField)({
