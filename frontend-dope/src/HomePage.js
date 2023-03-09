@@ -40,7 +40,7 @@ const HomePage = () => {
         const temp_data = {
             token: token
         }
-        
+
         // UNCOMMENT BELOW TO TEST /getplaylists endpoint and print data to console
 
     //     const test_endpoint = async () => {
@@ -62,24 +62,31 @@ const HomePage = () => {
         const data = {
             token: Token
         };
-        const response = await fetch('http://localhost:8000/defaultplaylist', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        });
-        const playlistID = await response.text();
-        // console.log(playlistID);
+
+        try {
+            const response = await fetch('http://localhost:8000/defaultplaylist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+                });
+                const playlistID = await response.text();
+                // console.log(playlistID);
+                
+                const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
+                    headers: {
+                        Authorization: `Bearer ${Token}`,
+                    },
+                });
+                // console.log(returnPlaylist.data);
+                setPlaylist(returnPlaylist.data);
+                navigate('/result', {state : returnPlaylist.data});
+        } catch (error) {
+            console.error('Error fetching default playlist:', error);
+            // TODO: HANDLE ERRORS HERE
+        }
         
-        const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
-            headers: {
-                Authorization: `Bearer ${Token}`,
-            },
-        });
-        // console.log(returnPlaylist.data);
-        setPlaylist(returnPlaylist.data);
-        navigate('/result', {state : returnPlaylist.data});
     };
 
     return (
