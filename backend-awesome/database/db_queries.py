@@ -12,7 +12,7 @@ def get_playlists_from_user(user_id):
     res = []
     for p in created_playlists:
         res.append(p)
-    return p
+    return res
 
 def get_playlist_info(playlist_id):
     info = db_constants.playlists.find_one({"_id":playlist_id})

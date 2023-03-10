@@ -1,7 +1,6 @@
-.homepage {
+.resultpage {
     text-align: center;
-    background:linear-gradient(#1e1e1e,transparent);
-    background-color:black;
+    background-color: black;
     min-height: 88vh;
     display: flex;
     flex-direction: column;
@@ -9,13 +8,9 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
-    font-family: 'Montserrat', sans-serif;
-    border: none;
-    color: white;
-    font-weight: bolder;
 }
 
-.logout-button {
+.button {
     padding: 1rem 5rem;
     border-radius: 5rem;
     background-color: #1BD760;
@@ -42,21 +37,4 @@
 .playlistImg {
     border-radius: 20%;
     width: 50%;
-}
-
-.past li {
-    list-style-type: none;
-}
-
-.past a {
-    font-size: calc(8px + 1vmin);
-    /* display: block; */
-    color: #969696;
-    /* text-align: center; */
-    text-decoration: none;
-}
-
-/* Change the link color to #111 (black) on hover */
-.past a:hover {
-    color: #ffffff;
 }

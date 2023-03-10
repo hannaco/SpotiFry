@@ -3,20 +3,27 @@ import db_constants, db_entry, db_delete, db_queries
 julia = {"_id" : "43c387bb15ce46f6"}
 test_playlist = {'_id': 'test_playlist_id', 'user': '43c387bb15ce46f6',
     'name': 'test_playlist_name', 'link': 'test_playlist_link', 
-    'seed_artist': 'test_playlist_seed_artist', 'seed_song': 'test_playlist_seed_song',
-    'seed_genre': 'test_playlist_seed_genre', 'liveliness': 'test_playlist_liveliness', 
-    'danceability': 'test_playlist_daceability', 'loudness': 'test_playlist_loudness', 
-    'popularity': 'test_playlist_popularity', 'instrumental': 'test_playlist_instrumental',
-    'acoustic': 'test_playlist_acoustic', 'energy': 'test_playlist_energy'}
+    'seed_artists': 'test_playlist_seed_artist',
+    'seed_genres': 'test_playlist_seed_genre', 'danceability': 'test_playlist_daceability',
+    'acousticness': 'test_playlist_acoustic',
+    'energy': 'test_playlist_energy',
+    'instrumentalness': 'test_playlist_instrumental',
+    'loudness': 'test_playlist_loudness',
+    'valence': 'test_playlist_valence',
+    'tempo': 'test_playlist_tempo'
+     }
+
+
 
 def test_db_entry():
     db_entry.add_user(julia["_id"])
 
-    db_entry.add_playlist(test_playlist["_id"], test_playlist["user"], test_playlist["name"],
-    test_playlist["link"], test_playlist["seed_artist"], test_playlist["seed_song"],
-    test_playlist["seed_genre"], test_playlist["liveliness"], test_playlist["danceability"],
-    test_playlist["loudness"], test_playlist["popularity"], test_playlist["instrumental"],
-    test_playlist["acoustic"], test_playlist["energy"])
+    db_entry.add_playlist(test_playlist["_id"], test_playlist["user"], 
+    test_playlist["name"], test_playlist["link"], test_playlist["seed_artists"],
+    test_playlist["seed_genres"], test_playlist["danceability"], 
+    test_playlist["acousticness"], test_playlist["energy"], 
+    test_playlist["instrumentalness"], test_playlist["loudness"], 
+    test_playlist["valence"], test_playlist["tempo"])
 
 def test_db_delete():
     db_delete.delete_user(julia["_id"])

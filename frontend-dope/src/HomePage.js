@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import "./HomePage.css";
 import axios from "axios";
 
 const HomePage = () => {
     const [Token, setToken] = useState([]);
-    const [clickText, setClickText] = useState("Click here");
-    const [instructionText, setInstructionText] = useState("Creat playlists of your top artists 👇");
-    const [playlist, setPlaylist] = useState([[]]);
+    const [generatedPlaylists, setGeneratedPlaylists] = useState([]);
     const [userProfile, setUserProfile] = useState([[]]);
+    const navigate = useNavigate();
     
     const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
     
@@ -29,39 +28,63 @@ const HomePage = () => {
             // FetchData(token); // example API call infra
         };
 
+        const FetchGeneratedPlaylists = async () => {
+            const data = {
+                token: token
+            };
+            const response = await fetch('http://localhost:8000/getplaylists', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const playlists = await response.text();
+            // console.log(playlists);
+            setGeneratedPlaylists(JSON.parse(playlists));
+        }
+
         if (token === '' || token === null) {
             return;
         } else {
             getUserInfo();
+            FetchGeneratedPlaylists();
         }
         // setToken would be taking place after the useEffect finished running
         // thus we need to use token instead of Token in the above code
         setToken(token);
     }, [])
 
+
     const FetchDefaultPlaylist = async () => {
-        setInstructionText("Successfully created! ✅ Click on the image to see!")
-        setClickText("Create another?")
         const data = {
             token: Token
         };
-        const response = await fetch('http://localhost:8000/defaultplaylist', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        });
-        const playlistID = await response.text();
-        // console.log(playlistID);
+
+        try {
+            const response = await fetch('http://localhost:8000/defaultplaylist', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+                });
+                const playlistID = await response.text();
+                // console.log(playlistID);
+                
+                const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
+                    headers: {
+                        Authorization: `Bearer ${Token}`,
+                    },
+                });
+                console.log(returnPlaylist.data);
+                navigate('/result', {state : returnPlaylist.data});
+        } catch (error) {
+            console.error('Error fetching default playlist:', error);
+            alert("Error fetching playlist, please try again.")
+            // TODO: HANDLE ERRORS HERE
+        }
         
-        const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
-            headers: {
-                Authorization: `Bearer ${Token}`,
-            },
-        });
-        // console.log(returnPlaylist.data);
-        setPlaylist(returnPlaylist.data);
     };
 
     return (
@@ -82,25 +105,27 @@ const HomePage = () => {
                     ) : (
                         <div>[No Profile Image]</div>
                     )}
+                    <div className="past">
+                    <h4>Recently Generated Playlists (Last 5) 👇</h4>
+                        {generatedPlaylists.length ? 
+                            <ul>
+                                {
+                                    generatedPlaylists.map((playlist, index) => (
+                                        <li key={index}> 
+                                            <a href={playlist.link}>{playlist.name}</a>
+                                        </li>                
+                                    )).slice(-5)
+                                }
+                            </ul> : <></>
+                        }
+                    </div>
                     <div>
-                        <h4>{instructionText}</h4>
+                        <h4>Creat playlists of your top artists 👇</h4>
                         <button
                             className="logout-button"
                             type="button"
                             onClick={FetchDefaultPlaylist}
-                        > {clickText}</button>
-                    </div>
-                    <div>
-                        {playlist && playlist.images ? (
-                            <div>
-                                <h4><i>{playlist.name}</i></h4>
-                                <a href={playlist.external_urls["spotify"]} target="_blank" rel="noreferrer">
-                                    <img className="playlistImg" src={playlist.images[0].url} alt="" />
-                                </a>
-                            </div>
-                        ) : (
-                            <></>
-                        )}
+                        >Click here</button>
                     </div>
                 </div>
             </div>
