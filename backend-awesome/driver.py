@@ -46,6 +46,9 @@ def default_playlist():
         random.shuffle(track_ids)
         sp.user_playlist_add_tracks(user_id, new_playlist["id"], track_ids)
 
+        add_playlist(new_playlist['id'], user_id, playlist_name,
+            new_playlist['external_urls']['spotify'])
+
         return new_playlist['id']
 
     except Exception as exception:
