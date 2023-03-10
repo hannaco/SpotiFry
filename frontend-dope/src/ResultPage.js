@@ -35,7 +35,7 @@ const ResultPage = () => {
                                         className="button"
                                         type="button"
                                         onClick={FetchCustomizePlaylist}
-                                    >See all your customized playlists</button>
+                                    >See all your generated playlists</button>
                                 </div>
                                 <h4><i>{playlist.name}</i></h4>
                                 <a href={playlist.external_urls["spotify"]} target="_blank" rel="noreferrer">

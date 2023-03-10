@@ -5,7 +5,7 @@ import axios from "axios";
 
 const HomePage = () => {
     const [Token, setToken] = useState([]);
-    const [playlist, setPlaylist] = useState([[]]);
+    const [generatedPlaylists, setGeneratedPlaylists] = useState([]);
     const [userProfile, setUserProfile] = useState([[]]);
     const navigate = useNavigate();
     
@@ -28,35 +28,33 @@ const HomePage = () => {
             // FetchData(token); // example API call infra
         };
 
+        const FetchGeneratedPlaylists = async () => {
+            const data = {
+                token: token
+            };
+            const response = await fetch('http://localhost:8000/getplaylists', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+            const playlists = await response.text();
+            // console.log(playlists);
+            setGeneratedPlaylists(JSON.parse(playlists));
+        }
+
         if (token === '' || token === null) {
             return;
         } else {
             getUserInfo();
+            FetchGeneratedPlaylists();
         }
         // setToken would be taking place after the useEffect finished running
         // thus we need to use token instead of Token in the above code
         setToken(token);
-       
-        const temp_data = {
-            token: token
-        }
-
-        // UNCOMMENT BELOW TO TEST /getplaylists endpoint and print data to console
-
-    //     const test_endpoint = async () => {
-    //         const response = await fetch('http://localhost:8000/getplaylists', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(temp_data),
-    //             });
-
-    //         const playlists_data = await response.json();
-    //         console.log(playlists_data);
-    //     }
-    //     test_endpoint();
     }, [])
+
 
     const FetchDefaultPlaylist = async () => {
         const data = {
@@ -79,8 +77,7 @@ const HomePage = () => {
                         Authorization: `Bearer ${Token}`,
                     },
                 });
-                // console.log(returnPlaylist.data);
-                setPlaylist(returnPlaylist.data);
+                console.log(returnPlaylist.data);
                 navigate('/result', {state : returnPlaylist.data});
         } catch (error) {
             console.error('Error fetching default playlist:', error);
@@ -108,6 +105,20 @@ const HomePage = () => {
                     ) : (
                         <div>[No Profile Image]</div>
                     )}
+                    <div className="past">
+                    <h4>Recently Generated Playlists (Last 5) 👇</h4>
+                        {generatedPlaylists.length ? 
+                            <ul>
+                                {
+                                    generatedPlaylists.map((playlist, index) => (
+                                        <li key={index}> 
+                                            <a href={playlist.link}>{playlist.name}</a>
+                                        </li>                
+                                    )).slice(-5)
+                                }
+                            </ul> : <></>
+                        }
+                    </div>
                     <div>
                         <h4>Creat playlists of your top artists 👇</h4>
                         <button

@@ -13,7 +13,7 @@ function Customize() {
 
     const [formData, setFormData] = useState({
         Artists: "Lauv",
-        Name: "Test",
+        Name: "My Customized Playlist",
         Genre: "pop",
         Danceability: 1,
         Accousticness: 1,
