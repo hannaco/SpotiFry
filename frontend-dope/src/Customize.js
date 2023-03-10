@@ -79,6 +79,7 @@ function Customize() {
             navigate('/result', {state : returnPlaylist.data});
         } catch (error) {
             console.error(error);
+            alert("Error fetching playlist, please try again.")
             // TODO HANDLE ERRORS HERE
         }        
     };
