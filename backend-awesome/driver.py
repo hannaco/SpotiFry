@@ -14,6 +14,10 @@ from db_queries import get_playlists_from_user
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
+
 @app.route('/defaultplaylist', methods=['POST'])
 def default_playlist():
     '''
