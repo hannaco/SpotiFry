@@ -32,7 +32,7 @@ const HomePage = () => {
             const data = {
                 token: token
             };
-            const response = await fetch('http://localhost:5000/getplaylists', {
+            const response = await fetch('http://localhost:80/getplaylists', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const HomePage = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:5000/defaultplaylist', {
+            const response = await fetch('http://localhost:80/defaultplaylist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -62,7 +62,7 @@ function Customize() {
             target_tempo: formData.Tempo,
         };
         try {
-            const response = await fetch('http://localhost:5000/customPlaylist', {
+            const response = await fetch('http://localhost:80/customPlaylist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
