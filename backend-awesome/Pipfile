@@ -9,6 +9,7 @@ pymongo = "*"
 flask = "*"
 flask-cors = "*"
 pylint = "*"
+gunicorn = "*"
 
 [dev-packages]
 

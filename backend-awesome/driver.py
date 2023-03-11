@@ -1,5 +1,6 @@
 import random
 import sys
+import os
 import spotipy
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -11,11 +12,16 @@ from db_queries import get_playlists_from_user
 
 
 # Initializing flask app
-app = Flask(__name__)
+app = Flask(__name__, static_folder='../frontend-dope/build', static_url_path='/')
+
 CORS(app)
 
 @app.route('/')
 def index():
+    return app.send_static_file('index.html')
+
+@app.errorhandler(404)
+def not_found(e):
     return app.send_static_file('index.html')
 
 @app.route('/defaultplaylist', methods=['POST'])
@@ -143,5 +149,5 @@ def get_playlists():
 
 
 # Running app
-if __name__ == '__main__':
-    app.run(host="localhost", port=8000, debug=True)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', debug=False, port=os.environ.get('PORT', 5000))
