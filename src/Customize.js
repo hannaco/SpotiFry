@@ -62,7 +62,7 @@ function Customize() {
             target_tempo: formData.Tempo,
         };
         try {
-            const response = await fetch('https://spotifry-app.herokuapp.com/customPlaylist', {
+            const response = await fetch('/customPlaylist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

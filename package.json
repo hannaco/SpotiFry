@@ -1,6 +1,7 @@
 {
   "name": "spotifry-frontend",
   "version": "0.1.0",
+  "proxy": "https://spotifry-app.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",

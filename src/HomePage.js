@@ -32,7 +32,7 @@ const HomePage = () => {
             const data = {
                 token: token
             };
-            const response = await fetch('https://spotifry-app.herokuapp.com/getplaylists', {
+            const response = await fetch('/getplaylists', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const HomePage = () => {
         };
 
         try {
-            const response = await fetch('https://spotifry-app.herokuapp.com/defaultplaylist', {
+            const response = await fetch('/defaultplaylist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
