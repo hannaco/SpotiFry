@@ -12,7 +12,7 @@ from db_queries import get_playlists_from_user
 
 
 # Initializing flask app
-app = Flask(__name__, static_folder='../frontend-dope/build', static_url_path='/')
+app = Flask(__name__, static_folder='../build', static_url_path='/')
 
 CORS(app)
 
