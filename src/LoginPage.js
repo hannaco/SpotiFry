@@ -6,7 +6,7 @@ function Login() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     // const client_secret = process.env.REACT_APP_CLIENT_SECRET;
     // const refresh_token = process.env.REACT_APP_REFRESH_TOKEN;
-    const redirect_uri = "https://spotifry-app.herokuapp.com/";
+    const redirect_uri = "http://localhost:3000";
     const response_type = "token";
     const scope = [
         "user-read-private",
