@@ -5,8 +5,6 @@ import spotipy
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
-sys.path.append('database')
-
 from db_entry import add_user, add_playlist
 from db_queries import get_playlists_from_user
 
