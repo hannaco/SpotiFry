@@ -120,7 +120,7 @@ def custom_playlist():
 @app.route('/getplaylists', methods=['POST'])
 def get_playlists():
     '''
-    generates default playlist for given profile based on top 5 artists
+    gets a user's recently created playlists stored in the database
     '''
     try:
         # Step 1: User authorization
