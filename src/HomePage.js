@@ -62,7 +62,7 @@ const HomePage = () => {
         };
 
         try {
-            const response = await fetch('http://localhost:80/defaultplaylist', {
+            const response = await fetch('https://spotifry-app.herokuapp.com/defaultplaylist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
