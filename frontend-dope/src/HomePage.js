@@ -77,12 +77,10 @@ const HomePage = () => {
                         Authorization: `Bearer ${Token}`,
                     },
                 });
-                console.log(returnPlaylist.data);
                 navigate('/result', {state : returnPlaylist.data});
         } catch (error) {
             console.error('Error fetching default playlist:', error);
             alert("Error fetching playlist, please try again.")
-            // TODO: HANDLE ERRORS HERE
         }
         
     };
