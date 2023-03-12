@@ -9,7 +9,7 @@ const ResultPage = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // console.log(state);
+        console.log(state);
         // console.log(localStorage.getItem('result'));
         if(state == null && localStorage.getItem('result')) {
             setPlaylist(JSON.parse(localStorage.getItem('result')));

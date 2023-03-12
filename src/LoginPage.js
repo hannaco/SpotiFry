@@ -31,20 +31,26 @@ function Login() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const hash = window.location.hash
-        let token = window.localStorage.getItem("token")
+        const hash = window.location.hash;
+        let token = null;
+        if(window.localStorage.getItem("token")) {
+            token = JSON.parse(window.localStorage.getItem("token")).token;
+            let expiration = JSON.parse(window.localStorage.getItem("token")).expiration;
+            if (expiration && Date.now() > expiration) {
+                // The data has expired, remove it from localStorage
+                localStorage.removeItem('token');
+            }
+        }
+        
         // if (!token && hash) { if token exists still compute new token
         if (hash) {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             // console.log(token)
-            window.localStorage.setItem("token", token)
+            const expiration = Date.now() + 1 * 60 * 1000; 
+            window.localStorage.setItem("token", JSON.stringify({token, expiration}))
             navigate('/homepage', { replace: true });
         }
     }, [navigate]);
-
-    const handleClick = async () => {
-        window.location.href = `${AUTH_ENDPOINT}?client_id=${client_id}&response_type=${response_type}&redirect_uri=${redirect_uri}&scope=${scope.join(" ")}&show_dialog=true`;
-    };
 
     return (
         <div className="Login">
