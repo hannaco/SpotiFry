@@ -60,7 +60,7 @@ def default_playlist():
 
         add_playlist(new_playlist['id'], user_id, playlist_name,
             new_playlist['external_urls']['spotify'])
-
+        print('made new playlist!: ', new_playlist['id'])
         return new_playlist['id']
 
     except Exception as exception:

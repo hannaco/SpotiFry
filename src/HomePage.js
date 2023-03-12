@@ -72,11 +72,14 @@ const HomePage = () => {
                 const playlistID = await response.text();
                 // console.log(playlistID);
                 
-                const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
+                const returnPlaylist = await fetch(GET_PLAYLIST_ENDPOINT + playlistID, {
                     headers: {
                         Authorization: `Bearer ${Token}`,
                     },
                 });
+                
+                const playlist = await returnPlaylist.json();
+                console.log(playlist)
                 navigate('/result', {state : returnPlaylist.data});
         } catch (error) {
             console.error('Error fetching default playlist:', error);
