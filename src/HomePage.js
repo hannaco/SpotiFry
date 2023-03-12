@@ -80,7 +80,7 @@ const HomePage = () => {
                 console.log(returnPlaylist);
                 const playlist = await returnPlaylist.json();
                 console.log(playlist);
-                navigate('/result', {state : playlist.data});
+                navigate('/result', {state : playlist});
         } catch (error) {
             console.error('Error fetching default playlist:', error);
             alert("Error fetching playlist, please try again.")
