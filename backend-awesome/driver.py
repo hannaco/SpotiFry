@@ -34,9 +34,10 @@ def default_playlist():
         # Step 1: User authorization
         data = request.get_json()
         token = data['token']
-
+        print("token received: ", token)
         sp = spotipy.Spotify(auth=token)
         user_id = sp.me()["id"]
+        print('user authd: ', user_id)
 
         # add user to database if not already registered
         add_user(user_id)
