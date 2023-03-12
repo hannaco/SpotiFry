@@ -71,7 +71,7 @@ const HomePage = () => {
                 });
                 const playlistID = await response.text();
                 // console.log(playlistID);
-                
+                await new Promise(r => setTimeout(r, 2000));
                 const returnPlaylist = await fetch(GET_PLAYLIST_ENDPOINT + playlistID, {
                     headers: {
                         Authorization: `Bearer ${data.token}`,
