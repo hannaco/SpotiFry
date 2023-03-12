@@ -71,7 +71,7 @@ function Customize() {
             });
             const playlistID = await response.text();
             
-            await new Promise(r => setTimeout(r, 1000));
+            await new Promise(r => setTimeout(r, 1500));
 
             const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
                 headers: {
