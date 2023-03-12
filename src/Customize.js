@@ -12,7 +12,7 @@ import { valid_genres } from "./Constants";
 function Customize() {
 
     const [formData, setFormData] = useState({
-        Artists: "Lauv",
+        Artists: "Ice Spice",
         Name: "My Customized Playlist",
         Genre: "pop",
         Danceability: 1,
