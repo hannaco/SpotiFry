@@ -1,7 +1,6 @@
 import "./LoginPage.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 function Login() {
     const client_id = process.env.REACT_APP_CLIENT_ID;
     // const client_secret = process.env.REACT_APP_CLIENT_SECRET;
@@ -24,33 +23,25 @@ function Login() {
         "user-library-modify",
         "user-library-read"
     ];
-
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
     // const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
-
     const navigate = useNavigate();
 
     useEffect(() => {
-        const hash = window.location.hash;
-        let token = null;
-        if(window.localStorage.getItem("token")) {
-            token = JSON.parse(window.localStorage.getItem("token")).token;
-            let expiration = JSON.parse(window.localStorage.getItem("token")).expiration;
-            if (expiration && Date.now() > expiration) {
-                // The data has expired, remove it from localStorage
-                localStorage.removeItem('token');
-            }
-        }
-        
+        const hash = window.location.hash
+        let token = window.localStorage.getItem("token")
         // if (!token && hash) { if token exists still compute new token
         if (hash) {
             token = hash.substring(1).split("&").find(elem => elem.startsWith("access_token")).split("=")[1]
             // console.log(token)
-            const expiration = Date.now() + 1 * 60 * 1000; 
-            window.localStorage.setItem("token", JSON.stringify({token, expiration}))
+            window.localStorage.setItem("token", token)
             navigate('/homepage', { replace: true });
         }
     }, [navigate]);
+
+    const handleClick = async () => {
+        window.location.href = `${AUTH_ENDPOINT}?client_id=${client_id}&response_type=${response_type}&redirect_uri=${redirect_uri}&scope=${scope.join(" ")}&show_dialog=true`;
+    };
 
     return (
         <div className="Login">
@@ -70,5 +61,4 @@ function Login() {
         </div>
     );
 }
-
 export default Login;
