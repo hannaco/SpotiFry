@@ -70,7 +70,9 @@ function Customize() {
                 body: JSON.stringify(data),
             });
             const playlistID = await response.text();
-    
+            
+            await new Promise(r => setTimeout(r, 1000));
+
             const returnPlaylist = await axios.get(GET_PLAYLIST_ENDPOINT + playlistID, {
                 headers: {
                     Authorization: `Bearer ${Token}`,

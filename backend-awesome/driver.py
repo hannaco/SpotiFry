@@ -34,10 +34,8 @@ def default_playlist():
         # Step 1: User authorization
         data = request.get_json()
         token = data['token']
-        print("token received: ", token)
         sp = spotipy.Spotify(auth=token)
         user_id = sp.me()["id"]
-        print('user authd: ', user_id)
 
         # add user to database if not already registered
         add_user(user_id)
@@ -60,7 +58,6 @@ def default_playlist():
 
         add_playlist(new_playlist['id'], user_id, playlist_name,
             new_playlist['external_urls']['spotify'])
-        print('made new playlist!: ', new_playlist['id'])
         return new_playlist['id']
 
     except Exception as exception:
