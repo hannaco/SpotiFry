@@ -10,15 +10,11 @@ const HomePage = () => {
     const navigate = useNavigate();
     
     const GET_PLAYLIST_ENDPOINT = `https://api.spotify.com/v1/playlists/`;
-    
+     
     useEffect(() => {
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
         
-        let { token, expiration } = JSON.parse(window.localStorage.getItem("token"));
-        if (expiration && Date.now() > expiration) {
-            // The data has expired, remove it from localStorage
-            localStorage.removeItem('token');
-        }
+        let token = window.localStorage.getItem("token");
         // console.log(token)
 
         const getUserInfo = async () => {

@@ -33,12 +33,8 @@ function Customize() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        let { token, expiration } = JSON.parse(window.localStorage.getItem("token"));
+        let token = window.localStorage.getItem("token");        
         // console.log(token)
-        if (expiration && Date.now() > expiration) {
-            // The data has expired, remove it from localStorage
-            localStorage.removeItem('token');
-        }
 
         if (token === '' || token === null) {
             return;
