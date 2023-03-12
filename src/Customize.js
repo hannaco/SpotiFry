@@ -102,13 +102,13 @@ function Customize() {
                     <h4>Only a few steps away from your personalized playlist...</h4>
                     <div className="inputcontainer">
                         <div>
-                            <button className="upload">
+                            {/* <button className="upload">
                                 Upload your playlist cover
                                 <input
                                     type="file"
                                     hidden
                                 />
-                            </button>
+                            </button> */}
                             <Box
                                 component="form"
                                 sx={{
