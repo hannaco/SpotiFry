@@ -1,0 +1,11 @@
+{
+    "source": {
+      "include": ["src/HomePage.js","src/LoginPage.js","src/ResultPage.js","src/Customize.js"],
+      "includePattern": ".+\\.js(doc|x)?$",
+      "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "opts": {
+      "recurse": true,
+      "destination": "./documentation"
+    }
+  }
