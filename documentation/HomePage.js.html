@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: HomePage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: HomePage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
 
 This module exports the HomePage component, which renders the home page of the application.
 @module HomePage
@@ -113,51 +141,73 @@ const HomePage = () => {
     };
 
     return (
-        <> {/* if not logged in (no token) navigate back to login page */}
-        {!window.localStorage.getItem("token") ? <Navigate replace to='/' />
+        &lt;> {/* if not logged in (no token) navigate back to login page */}
+        {!window.localStorage.getItem("token") ? &lt;Navigate replace to='/' />
             :
-            <div>
-                <div className="homepage">
-                    {userProfile && userProfile.images && userProfile.images[0] ? (
-                        <div className="container">
-                            <div>
-                                <img className="profileImg" src={userProfile.images[0].url} alt="" />
-                            </div>
-                            <div className="greeting">
-                                <h2>Hi, {userProfile.display_name}</h2>
-                            </div>
-                        </div>
+            &lt;div>
+                &lt;div className="homepage">
+                    {userProfile &amp;&amp; userProfile.images &amp;&amp; userProfile.images[0] ? (
+                        &lt;div className="container">
+                            &lt;div>
+                                &lt;img className="profileImg" src={userProfile.images[0].url} alt="" />
+                            &lt;/div>
+                            &lt;div className="greeting">
+                                &lt;h2>Hi, {userProfile.display_name}&lt;/h2>
+                            &lt;/div>
+                        &lt;/div>
                     ) : (
-                        <div>[No Profile Image]</div>
+                        &lt;div>[No Profile Image]&lt;/div>
                     )}
-                    <div className="past">
-                    <h4>Recently Generated Playlists (Last 5) 👇</h4>
+                    &lt;div className="past">
+                    &lt;h4>Recently Generated Playlists (Last 5) 👇&lt;/h4>
                         {generatedPlaylists.length ? 
-                            <ul>
+                            &lt;ul>
                                 {
                                     generatedPlaylists.map((playlist, index) => (
-                                        <li key={index}> 
-                                            <a href={playlist.link}>{playlist.name}</a>
-                                        </li>                
+                                        &lt;li key={index}> 
+                                            &lt;a href={playlist.link}>{playlist.name}&lt;/a>
+                                        &lt;/li>                
                                     )).slice(-5)
                                 }
-                            </ul> : <></>
+                            &lt;/ul> : &lt;>&lt;/>
                         }
-                    </div>
-                    <div>
-                        <h4>Creat playlists of your top artists 👇</h4>
-                        <button
+                    &lt;/div>
+                    &lt;div>
+                        &lt;h4>Creat playlists of your top artists 👇&lt;/h4>
+                        &lt;button
                             className="logout-button"
                             type="button"
                             onClick={FetchDefaultPlaylist}
-                        >Click here</button>
-                    </div>
-                </div>
-            </div>
+                        >Click here&lt;/button>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
         }
-        </>
+        &lt;/>
 
     );
 }
 
-export default HomePage;
+export default HomePage;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Customize.html">Customize</a></li><li><a href="module-HomePage.html">HomePage</a></li><li><a href="module-Login.html">Login</a></li><li><a href="module-ResultPage.html">ResultPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Mar 14 2023 22:12:34 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

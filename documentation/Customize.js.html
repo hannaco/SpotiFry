@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Customize.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Customize.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
 
 Customize component allows users to create a personalized playlist
 @module Customize
@@ -105,24 +133,24 @@ function Customize() {
     const CssTextField = TextField
 
     return (
-        <> {/* if not logged in (no token) navigate back to login page */}
-            {!window.localStorage.getItem("token") ? <Navigate replace to='/' />
+        &lt;> {/* if not logged in (no token) navigate back to login page */}
+            {!window.localStorage.getItem("token") ? &lt;Navigate replace to='/' />
                 :
-                <div className="customize">
-                    <h4>Only a few steps away from your personalized playlist...</h4>
-                    <div className="inputcontainer">
-                        <div>
-                            {/* <button className="upload">
+                &lt;div className="customize">
+                    &lt;h4>Only a few steps away from your personalized playlist...&lt;/h4>
+                    &lt;div className="inputcontainer">
+                        &lt;div>
+                            {/* &lt;button className="upload">
                                 Upload your playlist cover
-                                <input
+                                &lt;input
                                     type="file"
                                     hidden
                                 />
-                            </button> */}
-                            <Box
+                            &lt;/button> */}
+                            &lt;Box
                                 component="form"
                                 sx={{
-                                    '& .MuiTextField-root': { m: 1, width: '25ch' },
+                                    '&amp; .MuiTextField-root': { m: 1, width: '25ch' },
                                     border: 1, borderColor: 'green', borderRadius: '10px',
                                     display: 'flex', flexDirection: 'column', m: 2,
                                 }}
@@ -130,7 +158,7 @@ function Customize() {
                                 autoComplete="off"
                                 onSubmit={FetchCustomPlaylist}
                             >
-                                <CssTextField
+                                &lt;CssTextField
                                 required
                                 name='Name'
                                 id="outlined-required"
@@ -143,7 +171,7 @@ function Customize() {
                                     style: { color: 'white' },
                                 }}
                                 />
-                                <CssTextField
+                                &lt;CssTextField
                                     required
                                     name='Artists'
                                     id="outlined-required"
@@ -155,7 +183,7 @@ function Customize() {
                                         style: { color: 'white' },
                                     }}
                                 />
-                                <CssTextField
+                                &lt;CssTextField
                                     required
                                     name='Genre'
                                     id="outlined-required"
@@ -166,29 +194,29 @@ function Customize() {
                                     InputLabelProps={{
                                         style: { color: 'white' },
                                     }}
-                                    sx={{ '& .MuiInputBase-input': { color: 'white', textAlign: 'left' } }}
+                                    sx={{ '&amp; .MuiInputBase-input': { color: 'white', textAlign: 'left' } }}
 
                                 >
                                     {valid_genres.map((option) => (
-                                        <MenuItem key={option.value} value={option.value}>
+                                        &lt;MenuItem key={option.value} value={option.value}>
                                             {option.label}
-                                        </MenuItem>
+                                        &lt;/MenuItem>
                                     ))}
-                                </CssTextField>
-                            </Box>
-                            <button className="generate"
+                                &lt;/CssTextField>
+                            &lt;/Box>
+                            &lt;button className="generate"
                                 onClick={FetchCustomPlaylist}
                             >
                                 Generate
-                            </button>
-                        </div>
-                        <div className="slidecontainer">
-                            <Box sx={{
+                            &lt;/button>
+                        &lt;/div>
+                        &lt;div className="slidecontainer">
+                            &lt;Box sx={{
                                 width: 300, display: 'block', typography: 'body1', m: 2
                             }}>
                                 Accousticness
-                                <div className="Accousticness">
-                                    <Slider
+                                &lt;div className="Accousticness">
+                                    &lt;Slider
                                         defaultValue={1}
                                         name='Accousticness'
                                         valueLabelDisplay="auto"
@@ -199,10 +227,10 @@ function Customize() {
                                         max={10}
                                         sx={{ width: 300, color: 'success.main', }}
                                     />
-                                </div>
+                                &lt;/div>
                                 Danceability
-                                <div className="Danceability">
-                                    <Slider
+                                &lt;div className="Danceability">
+                                    &lt;Slider
                                         defaultValue={1}
                                         name='Danceability'
                                         valueLabelDisplay="auto"
@@ -213,10 +241,10 @@ function Customize() {
                                         max={10}
                                         sx={{ width: 300, color: 'success.main', }}
                                     />
-                                </div>
+                                &lt;/div>
                                 Energy
-                                <div className="Energy">
-                                    <Slider
+                                &lt;div className="Energy">
+                                    &lt;Slider
                                         defaultValue={1}
                                         name='Energy'
                                         valueLabelDisplay="auto"
@@ -227,10 +255,10 @@ function Customize() {
                                         max={10}
                                         sx={{ width: 300, color: 'success.main', }}
                                     />
-                                </div>
+                                &lt;/div>
                                 Instrumentalness
-                                <div className="Instrumentalness">
-                                    <Slider
+                                &lt;div className="Instrumentalness">
+                                    &lt;Slider
                                         defaultValue={1}
                                         name='Instrumentalness'
                                         valueLabelDisplay="auto"
@@ -241,10 +269,10 @@ function Customize() {
                                         max={10}
                                         sx={{ width: 300, color: 'success.main', }}
                                     />
-                                </div>
+                                &lt;/div>
                                 Loudness
-                                <div className="Loudness">
-                                    <Slider
+                                &lt;div className="Loudness">
+                                    &lt;Slider
                                         defaultValue={1}
                                         name='Loudness'
                                         valueLabelDisplay="auto"
@@ -255,10 +283,10 @@ function Customize() {
                                         max={10}
                                         sx={{ width: 300, color: 'success.main', }}
                                     />
-                                </div>
+                                &lt;/div>
                                 Tempo
-                                <div className="Tempo">
-                                    <Slider
+                                &lt;div className="Tempo">
+                                    &lt;Slider
                                         defaultValue={1}
                                         name='Valence'
                                         valueLabelDisplay="auto"
@@ -269,10 +297,10 @@ function Customize() {
                                         max={10}
                                         sx={{ width: 300, color: 'success.main', }}
                                     />
-                                </div>
+                                &lt;/div>
                                 Valence
-                                <div className="Valence">
-                                    <Slider
+                                &lt;div className="Valence">
+                                    &lt;Slider
                                         defaultValue={1}
                                         name='Tempo'
                                         valueLabelDisplay="auto"
@@ -283,10 +311,10 @@ function Customize() {
                                         max={10}
                                         sx={{ width: 300, color: 'success.main', }}
                                     />
-                                </div>
+                                &lt;/div>
                                 {/* Musicality 
-                            <div className="Musicality">
-                                <Slider
+                            &lt;div className="Musicality">
+                                &lt;Slider
                                     defaultValue={1}
                                     valueLabelDisplay="auto"
                                     onChange={(e) => setMusicality(e.target.value)}
@@ -296,14 +324,36 @@ function Customize() {
                                     max={10}
                                     sx={{ width: 300, color: 'success.main', }}
                                 />
-                            </div> */}
-                            </Box>
-                        </div>
-                    </div>
-                </div>
+                            &lt;/div> */}
+                            &lt;/Box>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
             }
-        </>
+        &lt;/>
     );
 }
 
-export default Customize;
+export default Customize;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Customize.html">Customize</a></li><li><a href="module-HomePage.html">HomePage</a></li><li><a href="module-Login.html">Login</a></li><li><a href="module-ResultPage.html">ResultPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Mar 14 2023 22:12:34 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

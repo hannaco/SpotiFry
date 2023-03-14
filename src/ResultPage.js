@@ -1,13 +1,39 @@
+/**
+
+A React component that displays the results of a generated playlist.
+@module ResultPage
+@requires react
+@requires react-router-dom
+@requires './ResultPage.css'
+*/
 import { useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import "./ResultPage.css";
 
+/**
+
+ResultPage component
+
+@function
+
+@returns {JSX.Element} JSX.Element
+*/
 const ResultPage = () => {
     
     const [playlist, setPlaylist] = useState([[]]);
     const {state} = useLocation();
     const navigate = useNavigate();
 
+    /**
+
+    A hook that is called on component mount and when the state variable changes.
+    Fetches the playlist state from local storage if state is null and sets it as playlist.
+    Otherwise, sets the state as playlist and updates local storage.
+    @memberof module:ResultPage
+    @inner
+    @function
+    @param {Array} state - the state variable of the component
+    */
     useEffect(() => {
         if(state == null && localStorage.getItem('result')) {
             setPlaylist(JSON.parse(localStorage.getItem('result')));
