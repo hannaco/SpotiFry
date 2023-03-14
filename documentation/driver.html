@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module driver</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>driver</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/workspaces/SpotiFry/backend-awesome/driver.py">/workspaces/SpotiFry/backend-awesome/driver.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;module&nbsp;provides&nbsp;a&nbsp;Flask&nbsp;web&nbsp;application&nbsp;that&nbsp;generates&nbsp;custom&nbsp;<br>
+or&nbsp;default&nbsp;playlists&nbsp;for&nbsp;a&nbsp;given&nbsp;user's&nbsp;Spotify&nbsp;account.<br>
+&nbsp;<br>
+It&nbsp;uses&nbsp;the&nbsp;Spotipy&nbsp;library&nbsp;to&nbsp;authorize&nbsp;and&nbsp;interact&nbsp;with&nbsp;the&nbsp;user's&nbsp;Spotify&nbsp;account,&nbsp;<br>
+and&nbsp;Flask&nbsp;to&nbsp;handle&nbsp;HTTP&nbsp;requests.<br>
+&nbsp;<br>
+Endpoints:<br>
+-&nbsp;/:&nbsp;serves&nbsp;the&nbsp;main&nbsp;page&nbsp;of&nbsp;the&nbsp;web&nbsp;app.<br>
+-&nbsp;/defaultplaylist:&nbsp;generates&nbsp;a&nbsp;default&nbsp;playlist&nbsp;for&nbsp;a&nbsp;given&nbsp;profile&nbsp;based&nbsp;on&nbsp;their&nbsp;top&nbsp;5&nbsp;artists.<br>
+-&nbsp;/customPlaylist:&nbsp;generates&nbsp;a&nbsp;custom&nbsp;playlist&nbsp;for&nbsp;a&nbsp;given&nbsp;profile&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;parameters.<br>
+-&nbsp;/getplaylists:&nbsp;gets&nbsp;a&nbsp;user's&nbsp;recently&nbsp;created&nbsp;playlists&nbsp;stored&nbsp;in&nbsp;the&nbsp;database.<br>
+&nbsp;<br>
+Dependencies:<br>
+-&nbsp;random<br>
+-&nbsp;sys<br>
+-&nbsp;os<br>
+-&nbsp;spotipy<br>
+-&nbsp;flask<br>
+-&nbsp;flask_cors<br>
+-&nbsp;db_entry<br>
+-&nbsp;db_queries</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="random.html">random</a><br>
+</td><td width="25%" valign=top><a href="spotipy.html">spotipy</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-custom_playlist"><strong>custom_playlist</strong></a>()</dt><dd><tt>Generates&nbsp;a&nbsp;custom&nbsp;playlist&nbsp;for&nbsp;a&nbsp;given&nbsp;profile&nbsp;based&nbsp;on&nbsp;the&nbsp;given&nbsp;parameters.</tt></dd></dl>
+ <dl><dt><a name="-default_playlist"><strong>default_playlist</strong></a>()</dt><dd><tt>Generates&nbsp;a&nbsp;default&nbsp;playlist&nbsp;for&nbsp;a&nbsp;given&nbsp;profile&nbsp;based&nbsp;on&nbsp;their&nbsp;top&nbsp;5&nbsp;artists.</tt></dd></dl>
+ <dl><dt><a name="-get_playlists"><strong>get_playlists</strong></a>()</dt><dd><tt>gets&nbsp;a&nbsp;user's&nbsp;recently&nbsp;created&nbsp;playlists&nbsp;stored&nbsp;in&nbsp;the&nbsp;database</tt></dd></dl>
+ <dl><dt><a name="-index"><strong>index</strong></a>()</dt><dd><tt>Serves&nbsp;the&nbsp;main&nbsp;page&nbsp;of&nbsp;the&nbsp;web&nbsp;app.</tt></dd></dl>
+ <dl><dt><a name="-not_found"><strong>not_found</strong></a>(e)</dt><dd><tt>Serves&nbsp;the&nbsp;main&nbsp;page&nbsp;of&nbsp;the&nbsp;web&nbsp;app&nbsp;when&nbsp;a&nbsp;404&nbsp;error&nbsp;occurs.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>app</strong> = &lt;Flask 'driver'&gt;<br>
+<strong>request</strong> = &lt;LocalProxy unbound&gt;</td></tr></table>
+</body></html>
