@@ -1,3 +1,26 @@
+"""
+This module provides a Flask web application that generates custom 
+or default playlists for a given user's Spotify account.
+
+It uses the Spotipy library to authorize and interact with the user's Spotify account, 
+and Flask to handle HTTP requests.
+
+Endpoints:
+- /: serves the main page of the web app.
+- /defaultplaylist: generates a default playlist for a given profile based on their top 5 artists.
+- /customPlaylist: generates a custom playlist for a given profile based on the given parameters.
+- /getplaylists: gets a user's recently created playlists stored in the database.
+
+Dependencies:
+- random
+- sys
+- os
+- spotipy
+- flask
+- flask_cors
+- db_entry
+- db_queries
+"""
 import random
 import sys
 import os
@@ -7,28 +30,33 @@ from flask_cors import CORS
 
 sys.path.append('/app/backend-awesome/')
 
-
 from db_entry import add_user, add_playlist
 from db_queries import get_playlists_from_user
-
 
 # Initializing flask app
 app = Flask(__name__, static_folder='../build', static_url_path='/')
 
+# Enabling Cross-Origin Resource Sharing (CORS) to allow requests from other domains
 CORS(app)
 
 @app.route('/')
 def index():
+    '''
+    Serves the main page of the web app.
+    '''
     return app.send_static_file('index.html')
 
 @app.errorhandler(404)
 def not_found(e):
+    '''
+    Serves the main page of the web app when a 404 error occurs.
+    '''
     return app.send_static_file('index.html')
 
 @app.route('/defaultplaylist', methods=['POST'])
 def default_playlist():
     '''
-    generates default playlist for given profile based on top 5 artists
+    Generates a default playlist for a given profile based on their top 5 artists.
     '''
     try:
         # Step 1: User authorization
@@ -56,19 +84,21 @@ def default_playlist():
         random.shuffle(track_ids)
         sp.user_playlist_add_tracks(user_id, new_playlist["id"], track_ids)
 
+        # Add the new playlist to the database
         add_playlist(new_playlist['id'], user_id, playlist_name,
             new_playlist['external_urls']['spotify'])
+        
         return new_playlist['id']
 
     except Exception as exception:
-    # handle the exception and return an error message to the client
+        # Handle the exception and return an error message to the client
         error_message = str(exception)
         return jsonify({'error': error_message}), 500
 
 @app.route('/customPlaylist', methods=['POST'])
 def custom_playlist():
     '''
-    generates custom playlist for given profile based on given params
+    Generates a custom playlist for a given profile based on the given parameters.
     '''
     try:
         # Step 1: User authorization
@@ -88,8 +118,6 @@ def custom_playlist():
             cand_id = results['artists']['items'][0]['id']
             if cand_id:
                 artist_ids.append(cand_id)
-
-        #valid_genres = sp.recommendation_genre_seeds()
 
         # Step 3: Create a new playlist for the user
         playlist_name = data['playlist_name']
