@@ -15,7 +15,6 @@ const HomePage = () => {
         const USER_PROFILE_ENDPOINT = `https://api.spotify.com/v1/me`;
         
         let token = window.localStorage.getItem("token");
-        // console.log(token)
 
         const getUserInfo = async () => {
             const { data } = await axios.get(USER_PROFILE_ENDPOINT, {
@@ -23,9 +22,7 @@ const HomePage = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            // console.log(data)
             setUserProfile(data);
-            // FetchData(token); // example API call infra
         };
 
         const FetchGeneratedPlaylists = async () => {
@@ -40,7 +37,6 @@ const HomePage = () => {
                 body: JSON.stringify(data),
             });
             const playlists = await response.text();
-            // console.log(playlists);
             setGeneratedPlaylists(JSON.parse(playlists));
         }
 
@@ -70,7 +66,6 @@ const HomePage = () => {
                 body: JSON.stringify(data),
                 });
                 const playlistID = await response.text();
-                // console.log(playlistID);
                 await new Promise(r => setTimeout(r, 2000));
                 const returnPlaylist = await fetch(GET_PLAYLIST_ENDPOINT + playlistID, {
                     headers: {
