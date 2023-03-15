@@ -7,7 +7,6 @@ This module exports the HomePage component, which renders the home page of the a
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./HomePage.css";
-import axios from "axios";
 
 
 /**
@@ -38,13 +37,14 @@ const HomePage = () => {
         @returns {void}
         */
         const getUserInfo = async () => {
-            const { data } = await axios.get(USER_PROFILE_ENDPOINT, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
+            const response = await fetch(USER_PROFILE_ENDPOINT, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
             });
+            const data = await response.json();
             setUserProfile(data);
-        };
+          };
 
         /**
         Fetches the generated playlists from the server.
