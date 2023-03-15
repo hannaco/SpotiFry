@@ -10,6 +10,8 @@ flask = "*"
 flask-cors = "*"
 pylint = "*"
 gunicorn = "*"
+flask-testing = "*"
+pytest = "*"
 
 [dev-packages]
 
