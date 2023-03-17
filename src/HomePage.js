@@ -42,6 +42,11 @@ const HomePage = () => {
                 Authorization: `Bearer ${token}`,
               },
             });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch user info');
+              }
+
             const data = await response.json();
             setUserProfile(data);
           };
@@ -63,6 +68,11 @@ const HomePage = () => {
                 },
                 body: JSON.stringify(data),
             });
+
+            if (!response.ok) {
+                throw new Error('Failed to fetch user info');
+              }
+
             const playlists = await response.text();
             setGeneratedPlaylists(JSON.parse(playlists));
         }
