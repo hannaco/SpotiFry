@@ -13,13 +13,13 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            cd backend
+            cd backend-awesome
             pip install pipenv
             pipenv install --dev
       - run:
           name: Run tests
           command: |
-            cd backend
+            cd backend-awesome
             pipenv run pytest
   frontend-tests:
     docker:
